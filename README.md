@@ -4,7 +4,7 @@ This experiment initiated in April 9, 2023
 ## Introduction to PocketBase
 `PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
 
-You can download `PocketBase` using the link below:
+You can download `PocketBase` using the link below:<br/>
 <b>•</b> https://pocketbase.io/docs
 
 ## How to Run PocketBase?
@@ -20,7 +20,7 @@ If the command above didn't work for you, try this:
 ```
 pocketbase serve
 ```
-<b><em>Note:</em></b> The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/>
+<b><em>Note:</em></b> The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/><br/>
 <b>5.</b> After running the previous command you will see something like this:
 ```javascript
 2023/04/09 22:11:46 Server started at http://127.0.0.1:8090
@@ -29,10 +29,10 @@ pocketbase serve
 ```
 
 ## Explaining the Links
-Based on the official documentation, the meaning of the links are the following:
-<b>•</b> `http://127.0.0.1:8090` - if pb_public directory exists, serves the static content from it (html, css, images, etc.)
-<b>•</b> `http://127.0.0.1:8090/_/` - Admin dashboard UI
-<b>•</b> `http://127.0.0.1:8090/api/` - REST API
+Based on the official documentation, the meaning of the links are the following:<br/>
+<b>•</b> `http://127.0.0.1:8090` - if pb_public directory exists, serves the static content from it (html, css, images, etc.)<br/>
+<b>•</b> `http://127.0.0.1:8090/_/` - Admin dashboard UI<br/>
+<b>•</b> `http://127.0.0.1:8090/api/` - REST API<br/>
 
 ----
 ### Did You Like This Experiment?
