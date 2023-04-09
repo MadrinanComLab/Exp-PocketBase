@@ -34,6 +34,33 @@ Based on the official documentation, the meaning of the links are the following:
 <b>•</b> `http://127.0.0.1:8090/_/` - Admin dashboard UI<br/>
 <b>•</b> `http://127.0.0.1:8090/api/` - REST API<br/>
 
+## Folders in Pre-Built PocketBase
+The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the executable:<br/>
+<b>•</b> `pb_data` - stores your application data, uploaded files, etc. (usually should be added in `.gitignore`).<br/>
+<b>•</b> `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).<br/><br/>
+
+You have to add the following folder:<br/>
+<b>•</b> `pb_public` - This is the folder that will be hosted by PocketBase. Here is an example:<br/>
+<b>1.</b> After creating the `pb_public`, create a file inside this folder named `index.html` and copy paste the following code:
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Testing123</title>
+    </head>
+    <body>
+       <h1>Welcome to PocketBase Experiment by MadriñanComLab!</h1> 
+    </body>
+</html>
+```
+<b>2.</b> Then go to this URL:
+```
+http://127.0.0.1:8090/
+``` 
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
