@@ -1,5 +1,6 @@
 # Welcome to PocketBase Experiment!
 This experiment initiated in April 9, 2023
+`Reference for this experiment:` https://www.youtube.com/watch?v=rediFff54JA&t=75s
 
 ## Introduction to PocketBase
 `PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
