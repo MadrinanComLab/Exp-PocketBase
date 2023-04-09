@@ -39,6 +39,7 @@ The prebuilt PocketBase executable will automatically create and manage 2 new di
 <b>•</b> `pb_data` - stores your application data, uploaded files, etc. (usually should be added in `.gitignore`).<br/>
 <b>•</b> `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).<br/><br/>
 
+## User-Defined Folder
 You have to add the following folder:<br/>
 <b>•</b> `pb_public` - This is the folder that will be hosted by PocketBase. Here is an example:<br/>
 <b>1.</b> After creating the `pb_public`, create a file inside this folder named `index.html` and copy paste the following code:
