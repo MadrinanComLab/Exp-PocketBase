@@ -21,10 +21,6 @@ If the command above didn't work for you, try this:
 ```
 pocketbase serve
 ```
-If the command above didn't work, try this:
-```
-./pocketbase serve
-```
 
 <b><em>Note:</em></b> The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/><br/>
 <b>5.</b> After running the previous command you will see something like this:
