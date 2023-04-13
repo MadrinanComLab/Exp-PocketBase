@@ -3,9 +3,9 @@
 This experiment initiated in April 9, 2023
 
 ## Introduction to PocketBase
-`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/><br/>
+`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
 
-I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to video of Fireship where he full introduce PocketBase.<br/><br/>
+I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to video of Fireship where he full introduce PocketBase.<br/>
 
 You can download `PocketBase` using the link below:<br/>
 <b>•</b> https://pocketbase.io/docs
@@ -80,10 +80,12 @@ npm create react-app pb_app
 ## Forgot your Password for PocketBase Admin?
 Just in case that you have forgotten your password. What you can do is:<br/>
 <b>1.</b> Stop the server of PocketBase in your computer (if it was running).<br/>
-<b>2.</b> Delete the pb_data, pb_migrations and pb_public<br/>
+<b>2.</b> Delete the `pb_data`<br/>
 <b>3.</b> Run your PocketBase<br/>
 <b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
-<b>5.</b> Then you can now set your new email and password. 
+<b>5.</b> Then you can now set your new email and password. <br/>
+
+<b><em>Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete the `pb_migration` because this contains the structure of your database. You may delete it unless you intended to delete the structure of database. But for just to regain access the admin side of your database, just delete the `pb_data`.
 
 ## Creating New Collection
 The admin UI was straightforward, but in case that you are hesitant here is a brief introduction:
@@ -99,7 +101,7 @@ The admin UI was straightforward, but in case that you are hesitant here is a br
 <b>6.</b> If you click the cog icon in inline with your field, an option for min and max length would appear as well as the regex.<br/>
 ![Steps-7](https://user-images.githubusercontent.com/74145874/231828239-2abd1e31-f38d-41c9-a649-6b2304a60b5b.jpg)
 ![PB-Index-Modal](https://user-images.githubusercontent.com/74145874/231829002-5dd793e2-a7d6-4dab-8f07-3c0a90aa4873.jpg)
-<b>7.</b> If you click the "New index" a modal would appear for you to setup you indexes.<br/><br/>
+<b>7.</b> If you click the "New index" a modal would appear for you to setup you indexes.<br/>
 
 Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/sql/sql_create_index.asp)<br/>
 
