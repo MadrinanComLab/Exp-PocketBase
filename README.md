@@ -3,7 +3,9 @@
 This experiment initiated in April 9, 2023
 
 ## Introduction to PocketBase
-`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
+`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/><br/>
+
+I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to video of Fireship where he full introduce PocketBase.<br/><br/>
 
 You can download `PocketBase` using the link below:<br/>
 <b>•</b> https://pocketbase.io/docs
@@ -82,6 +84,28 @@ Just in case that you have forgotten your password. What you can do is:<br/>
 <b>3.</b> Run your PocketBase<br/>
 <b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
 <b>5.</b> Then you can now set your new email and password. 
+
+## Creating New Collection
+The admin UI was straightforward, but in case that you are hesitant here is a brief introduction:
+![Steps-1-to-3](https://user-images.githubusercontent.com/74145874/231815970-34dd300e-e440-42aa-9a98-dcd205501a93.jpg)
+<b>1.</b> Start with creating your collection. After you click that, a modal will appear on the right.<br/>
+<b>2.</b> Name your collection however you want. Think of a collection as a table, and you can see in the suggestion that it follows the naming convention of SQL (where tables are named plural).<br/>
+<b>3.</b> After naming your first collection, you can then create the first field in your collection.<br/>
+
+![Steps-4-to-5](https://user-images.githubusercontent.com/74145874/231820524-85f33754-359c-4846-9c39-37ecccbc2594.jpg)
+<b>4.</b> After clicking the `New field` button, an options for data type would appear.<br/>
+<b>5.</b> Name your first field here. Think of field as column in your database.<br/>
+![Steps-6](https://user-images.githubusercontent.com/74145874/231826418-d72eb2df-2c30-4430-9203-4b417951c929.jpg)
+<b>6.</b> If you click the cog icon in inline with your field, an option for min and max length would appear as well as the regex.<br/>
+![Steps-7](https://user-images.githubusercontent.com/74145874/231828239-2abd1e31-f38d-41c9-a649-6b2304a60b5b.jpg)
+![PB-Index-Modal](https://user-images.githubusercontent.com/74145874/231829002-5dd793e2-a7d6-4dab-8f07-3c0a90aa4873.jpg)
+<b>7.</b> If you click the "New index" a modal would appear for you to setup you indexes.<br/><br/>
+
+Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/sql/sql_create_index.asp)<br/>
+
+<b>8.</b> You can now save your first collection. Ow, wait, you aren't able to save it? Well, that was because there is already a "users" collection that initially included in your first PocketBase application.<br/>
+
+I apologize about it, this README was created while firstly exploring PB.
 
 ----
 ### Did You Like This Experiment?
