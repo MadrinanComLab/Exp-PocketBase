@@ -63,6 +63,17 @@ You have to add the following folder:<br/>
 http://127.0.0.1:8090/
 ``` 
 
+## Adding React Application to PocketBase App:
+To add React app, just do the following command:
+```
+npm create react-app <app_name>
+```
+
+Example:
+```
+npm create react-app pb_app
+```
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
