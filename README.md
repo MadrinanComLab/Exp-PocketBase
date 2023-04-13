@@ -21,6 +21,11 @@ If the command above didn't work for you, try this:
 ```
 pocketbase serve
 ```
+If the command above didn't work, try this:
+```
+./pocketbase serve
+```
+
 <b><em>Note:</em></b> The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/><br/>
 <b>5.</b> After running the previous command you will see something like this:
 ```javascript
@@ -73,6 +78,14 @@ Example:
 ```
 npm create react-app pb_app
 ```
+
+## Forgot your Password for PocketBase Admin?
+Just in case that you have forgotten your password. What you can do is:<br/>
+<b>1.</b> Stop the server of PocketBase in your computer (if it was running).<br/>
+<b>2.</b> Delete the pb_data, pb_migrations and pb_public<br/>
+<b>3.</b> Run your PocketBase<br/>
+<b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
+<b>5.</b> Then you can now set your new email and password. 
 
 ----
 ### Did You Like This Experiment?
