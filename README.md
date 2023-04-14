@@ -109,6 +109,84 @@ Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/
 
 I apologize about it, this README was created while firstly exploring PB.
 
+## React and PocketBase SDK Setup
+In the tutorial, the following files were added in the root folder of `pb_app`:<br/>
+<b>•</b> <em>.env.local</em><br/>
+<b>•</b> <em>jsconfig.json</em> - In the code here, what it does is make `src` folder as root directory for importing and avoid the example imports below:<br/>
+```javascript
+import x from "../../../folder/file";
+```
+<br/>
+
+<b>•</b> Delete the following in `pb_app/src`:<br/>
+    <b>•</b> App.css<br/>
+    <b>•</b> App.test.js<br/>
+    <b>•</b> index.css<br/>
+    <b>•</b> logo.svg<br/>
+    <b>•</b> reportWebVitals.js<br/>
+    <b>•</b> setupTest.js<br/>
+<b>•</b> Remove the following in `index.js`:<br/>
+
+```javascript
+import reportWebVitals from './reportWebVitals';
+import './index.css';
+...
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+<br/>
+
+<b>•</b> Remove the following in `App.js`:<br/>
+```javascript
+import logo from './logo.svg';
+import './App.css';
+...
+    // This is the chuck of code in return statement
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+```
+<br/>
+
+<b>•</b> You can now add the JavaScript PocketBase SDK, run the following command in your terminal:
+```
+npm install pocketbase --save
+```
+<b><em>Note:</em></b> Make sure you are in `pb_app` directory, where the React app was.<br/>
+
+<b>•</b> Then create `/lib/pocketbase.js` file inside `src` folder, and add the following code snippet:
+
+```javascript
+import PocketBase from "pocketbase";
+
+const pb = new PocketBase(process.env.REACT_APP_PB_URL);
+
+export default pb;
+```
+
+<b><em>Note:</em></b> The value of `REACT_APP_PB_URL` was `http://127.0.0.1:8090`, and it was in the `.env.local`
+
+<b>•</b> Now, to test if everything is working run the following command:
+
+```
+npm start
+```
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
