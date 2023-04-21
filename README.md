@@ -187,6 +187,57 @@ export default pb;
 npm start
 ```
 
+## Authentication (With react-hook-form)
+`PocketBase` provides a documentation about their authentacation, you can read it [here](https://pocketbase.io/docs/authentication/), in case you want to read more about it.<br/>
+
+
+### Examples
+The following will be a sets of different example of `PocketBase` authentication
+
+#### #1
+First, create `Auth.js` in `src`. For now, the Auth component will contain the following:
+
+```javascript
+import PB from "lib/pocketbase";
+
+function Auth(){
+    return (
+        <>
+            {/* For a simple example of pocketbase authentication */}
+            <h1>Logged In: { PB.authStore.isValid.toString() }</h1>
+        </>
+    );
+}
+
+export default Auth;
+```
+
+Import the Auth component to App.js:
+
+```javascript
+import Auth from "Auth";
+
+function App() {
+  return (
+    <>
+        <Auth/>
+    </>
+  );
+}
+
+export default App;
+
+```
+<br/>
+
+Your browser should display something like this:
+![ss-3](https://user-images.githubusercontent.com/74145874/233703193-e66d9942-d932-4023-8ce4-627a791e131c.png)
+
+The first example makes sense that it displays `false`, because a user haven't logged in yet, right?
+
+#### #2
+Now, let's level up the previous example. Still in `Auth.js`, do the following:
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
