@@ -10,6 +10,15 @@ function Auth(){
     /* Later, this will be use to re-render the Auth component */
     const [ dummy, setDummy] = useState(0);
 
+    /**
+     * DOCU: Function to check if user record exists in the database
+     * Triggered: This function will be triggered when user clicked the login button
+     * Last Update: April 23, 2023
+     * @function
+     * @memberOf Auth
+     * @param {object} data - This is the object provided by the useForm of react-hook-form
+     * @author MadriñanComputerLab
+     */
     async function login(data){
         /* This function was a custom function of handleSubmit() */
         setLoading(true);
@@ -26,6 +35,14 @@ function Auth(){
         setLoading(false);
     }
 
+    /**
+     * DOCU: Function to clear user data
+     * Triggered: This function will be triggered when user clicked the logout button
+     * Last Update: April 23, 2023
+     * @function
+     * @memberOf Auth
+     * @author MadriñanComputerLab
+     */
     function logout(){
         /* logout() function was not an asynchronous function because it doesn't do an API call. Instead, it simply clear the cookie */
         PB.authStore.clear();
