@@ -1,6 +1,10 @@
+import Auth from "Auth";
+
 function App() {
   return (
-    <></>
+    <>
+        <Auth/>
+    </>
   );
 }
 

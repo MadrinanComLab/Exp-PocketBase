@@ -237,6 +237,165 @@ The first example makes sense that it displays `false`, because a user haven't l
 
 #### #2
 Now, let's level up the previous example. Still in `Auth.js`, do the following:
+```javascript
+import PB from "lib/pocketbase";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+function Auth(){
+    const { register, handleSubmit } = useForm();
+    const [ is_loading, setLoading ] = useState(false);
+
+    async function login(data){
+        /* This function was a custom function of handleSubmit() */
+        setLoading(true);
+
+        try{
+            const auth_data = await PB
+                .collection("users")
+                .authWithPassword(data.email, data.password);
+        }
+        catch(error){
+            console.log(error);
+        }
+
+        setLoading(false);
+    }
+
+    return (
+        <>
+            <h1>Logged In: { PB.authStore.isValid.toString() }</h1>
+            { is_loading && <p>Loading...</p> }
+
+            <form onSubmit={ handleSubmit(login) }>
+                <input type="text" placeholder="email" {...register("email")}/>
+                <input type="password" placeholder="password" {...register("password")}/>
+                <button type="submit" disabled={ is_loading }>Login</button>
+            </form>
+        </>
+    );
+}
+
+export default Auth;
+```
+
+<br/>
+Before we proceed in creating the first user, let's breakdown the example code above because there was a huge change between example #1 and #2.<br/><br/>
+
+- First, is about the `React-hook-form`, which will help us to handle the sample login:
+```javascript
+const { register, handleSubmit } = useForm();
+```
+
+<br/>
+To install `react-hook-form` in your project, just run the following command:
+```
+npm install react-hook-form
+```
+<b><em>NOTE:</em></b> Make sure you are in `pb_app` folder before you install this npm library.<br/>
+
+- State object that will be used for simple loading indicator.
+```javascript
+const [ is_loading, setLoading ] = useState(false);
+```
+
+<br/>
+
+- Then, the actual code for validation, there was a comment on the code to help breaking it down:
+```javascript
+async function login(data){
+    /* This function was a custom function of handleSubmit() */
+    /* Set is_loading to true to indicated the request in on process */
+    setLoading(true);
+
+    /* Try catch statement was used to handle the possible error that may occur. */
+    try{
+        const auth_data = await PB
+            /* The 'collection' is the collection of pocketbase */
+            .collection("users")
+            /* 'authWithPassword' will handle the authentication */
+            .authWithPassword(data.email, data.password);
+    }
+    catch(error){
+        console.log(error);
+    }
+
+    setLoading(false);
+}
+```
+
+<br/>
+
+Now, let's create our first user, you use whatever email and password you want:
+![sample-user](https://user-images.githubusercontent.com/74145874/233798503-2a222579-6bb3-49b7-9513-5ec14c01d545.png)
+![sample-user(1)](https://user-images.githubusercontent.com/74145874/233798616-76b5ab3c-fe45-4c52-8198-b60847c1a52b.png)
+
+After this, you can try if it works.
+
+#### #3
+User can now logged in, and for the last example, we will enable users to logged out. Do the this in `Auth.js`:
+```javascript
+import PB from "lib/pocketbase";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+
+function Auth(){
+    const { register, handleSubmit } = useForm();
+    const [ is_loading, setLoading ] = useState(false);
+    const is_logged_in = PB.authStore.isValid;
+
+    /* Later, this will be use to re-render the Auth component */
+    const [ dummy, setDummy] = useState(0);
+
+    async function login(data){
+        /* This function was a custom function of handleSubmit() */
+        setLoading(true);
+
+        try{
+            const auth_data = await PB
+                .collection("users")
+                .authWithPassword(data.email, data.password);
+        }
+        catch(error){
+            console.log(error);
+        }
+
+        setLoading(false);
+    }
+
+    function logout(){
+        /* logout() function was not an asynchronous function because it doesn't do an API call. Instead, it simply clear the cookie */
+        PB.authStore.clear();
+        setDummy(Math.random());
+    }
+
+    /* Just another way of conditional rendering in React */
+    if(is_logged_in){
+        return (
+            <>
+                {/* If a user has logged in, display the email address */}
+                <h1>Logged In: { is_logged_in && PB.authStore.model.email }</h1>
+                <button onClick={ logout }>Log Out</button>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <h1>Welcome to Login Page!</h1>
+            { is_loading && <p>Loading...</p> }
+
+            <form onSubmit={ handleSubmit(login) }>
+                <input type="text" placeholder="email" {...register("email")}/>
+                <input type="password" placeholder="password" {...register("password")}/>
+                <button type="submit" disabled={ is_loading }>Login</button>
+            </form>
+        </>
+    );
+}
+
+export default Auth;
+```
 
 ----
 ### Did You Like This Experiment?
