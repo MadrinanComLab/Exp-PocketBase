@@ -400,13 +400,13 @@ export default Auth;
 ## Auth Hooks (with react-query)
 In this part of the documentation, we will be destructuring the example code from previous chapter.<br/>
 
-First, we'll destructure the function for logout. Create a `hooks` folder in `src`, and create `UserLogout.js`, and this will be contain the following code:
+First, we'll destructure the function for logout. Create a `hooks` folder in `src`, and create `UseLogout.js`, and this will be contain the following code:
 
 ```javascript
 import PB from "lib/pocketbase";
 import { useState } from "react";
 
-function UserLogout(){
+function UseLogout(){
     /* Later, this will be use to re-render the Auth component */
     const [ dummy, setDummy] = useState(0);
 
@@ -419,7 +419,7 @@ function UserLogout(){
     return logout;
 }
 
-export default UserLogout;
+export default UseLogout;
 ```
 <b><em>NOTE:</em></b> The code above was an example of React custom hooks.
 
@@ -428,7 +428,7 @@ export default UserLogout;
 The `Auth.js` will look like this:
 ```javascript
 /* The custom hook was imported to Auth.js */
-import UserLogout from "hooks/UserLogout";
+import UseLogout from "hooks/UseLogout";
 
 import PB from "lib/pocketbase";
 import { useState, useEffect } from "react";
@@ -436,7 +436,7 @@ import { useForm } from "react-hook-form";
 
 function Auth(){
     /* logout() function was declared like this */
-    const logout = UserLogout();
+    const logout = UseLogout();
     const { register, handleSubmit } = useForm();
     const [ is_loading, setLoading ] = useState(false);
     const is_logged_in = PB.authStore.isValid;
