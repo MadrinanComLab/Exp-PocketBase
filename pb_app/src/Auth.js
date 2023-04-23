@@ -1,12 +1,12 @@
-import UserLogout from "hooks/UserLogout";
+import UseLogin from "hooks/UseLogin";
+import UseLogout from "hooks/UseLogout";
 import PB from "lib/pocketbase";
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 function Auth(){
-    const logout = UserLogout();
+    const logout = UseLogout();
+    const { login, is_loading } = UseLogin();
     const { register, handleSubmit, reset } = useForm();
-    const [ is_loading, setLoading ] = useState(false);
     const is_logged_in = PB.authStore.isValid;
 
     /**
@@ -18,20 +18,8 @@ function Auth(){
      * @param {object} data - This is the object provided by the useForm of react-hook-form
      * @author MadriñanComputerLab
      */
-    async function login(data){
-        /* This function was a custom function of handleSubmit() */
-        setLoading(true);
-
-        try{
-            const auth_data = await PB
-                .collection("users")
-                .authWithPassword(data.email, data.password);
-        }
-        catch(error){
-            console.log(error);
-        }
-
-        setLoading(false);
+    async function onSubmit(data){
+        login(data);
         reset();
     }
 
@@ -50,7 +38,7 @@ function Auth(){
             <h1>Welcome to Login Page!</h1>
             { is_loading && <p>Loading...</p> }
 
-            <form onSubmit={ handleSubmit(login) }>
+            <form onSubmit={ handleSubmit(onSubmit) }>
                 <input type="text" placeholder="email" {...register("email")}/>
                 <input type="password" placeholder="password" {...register("password")}/>
                 <button type="submit" disabled={ is_loading }>Login</button>
