@@ -1,14 +1,13 @@
+import UserLogout from "hooks/UserLogout";
 import PB from "lib/pocketbase";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 function Auth(){
-    const { register, handleSubmit } = useForm();
+    const logout = UserLogout();
+    const { register, handleSubmit, reset } = useForm();
     const [ is_loading, setLoading ] = useState(false);
     const is_logged_in = PB.authStore.isValid;
-
-    /* Later, this will be use to re-render the Auth component */
-    const [ dummy, setDummy] = useState(0);
 
     /**
      * DOCU: Function to check if user record exists in the database
@@ -33,20 +32,7 @@ function Auth(){
         }
 
         setLoading(false);
-    }
-
-    /**
-     * DOCU: Function to clear user data
-     * Triggered: This function will be triggered when user clicked the logout button
-     * Last Update: April 23, 2023
-     * @function
-     * @memberOf Auth
-     * @author MadriñanComputerLab
-     */
-    function logout(){
-        /* logout() function was not an asynchronous function because it doesn't do an API call. Instead, it simply clear the cookie */
-        PB.authStore.clear();
-        setDummy(Math.random());
+        reset();
     }
 
     if(is_logged_in){
