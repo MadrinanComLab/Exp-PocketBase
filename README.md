@@ -400,6 +400,7 @@ export default Auth;
 ## Auth Hooks (with react-query)
 In this part of the documentation, we will be destructuring the example code from previous chapter.<br/>
 
+### Destructuring Logout Function
 First, we'll destructure the function for logout. Create a `hooks` folder in `src`, and create `UseLogout.js`, and this will be contain the following code:
 
 ```javascript
@@ -515,6 +516,89 @@ async function login(data){
     /* reset() was added here */
     reset();
 }
+```
+
+<br/>
+
+### Destructuring Login Function
+
+Now that we destructure the logout function using custom hook, we'll take a few steps to destructure the login as well.<br/>
+
+Create `UseLogin.js` and will contain the following:
+```javascript
+import PB from "lib/pocketbase";
+import { useState } from "react";
+
+function UseLogin(){
+    const [ is_loading, setLoading ] = useState(false);
+
+    async function login({ email, password }){
+        /* This function was a custom function of handleSubmit() */
+        setLoading(true);
+
+        try{
+            const auth_data = await PB
+                .collection("users")
+                .authWithPassword(email, password);
+        }
+        catch(error){
+            console.log(error);
+        }
+
+        setLoading(false);
+    }
+
+    return { login, is_loading };
+}
+
+export default UseLogin;
+```
+
+<br/>
+
+Since we remove login function, the `Auth.js` will looked like this:
+```javascript
+import UseLogin from "hooks/UseLogin";
+import UseLogout from "hooks/UseLogout";
+import PB from "lib/pocketbase";
+import { useForm } from "react-hook-form";
+
+function Auth(){
+    const logout = UseLogout();
+    const { login, is_loading } = UseLogin();
+    const { register, handleSubmit, reset } = useForm();
+    const is_logged_in = PB.authStore.isValid;
+
+    async function onSubmit(data){
+        login(data);
+        reset();
+    }
+
+    if(is_logged_in){
+        return (
+            <>
+                {/* If a user has logged in, display the email address */}
+                <h1>Logged In: { is_logged_in && PB.authStore.model.email }</h1>
+                <button onClick={ logout }>Log Out</button>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <h1>Welcome to Login Page!</h1>
+            { is_loading && <p>Loading...</p> }
+
+            <form onSubmit={ handleSubmit(onSubmit) }>
+                <input type="text" placeholder="email" {...register("email")}/>
+                <input type="password" placeholder="password" {...register("password")}/>
+                <button type="submit" disabled={ is_loading }>Login</button>
+            </form>
+        </>
+    );
+}
+
+export default Auth;
 ```
 
 ----
