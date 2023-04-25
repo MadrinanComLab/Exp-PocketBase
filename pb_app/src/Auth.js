@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 function Auth(){
     const logout = UseLogout();
-    const { login, is_loading } = UseLogin();
+    const { mutate, isLoading, isError } = UseLogin();
     const { register, handleSubmit, reset } = useForm();
     const is_logged_in = PB.authStore.isValid;
 
@@ -19,7 +19,7 @@ function Auth(){
      * @author MadriñanComputerLab
      */
     async function onSubmit(data){
-        login(data);
+        mutate(data);
         reset();
     }
 
@@ -36,12 +36,13 @@ function Auth(){
     return (
         <>
             <h1>Welcome to Login Page!</h1>
-            { is_loading && <p>Loading...</p> }
+            { isLoading && <p>Loading...</p> }
+            { isError && <p>Invalid email or password</p> }
 
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <input type="text" placeholder="email" {...register("email")}/>
                 <input type="password" placeholder="password" {...register("password")}/>
-                <button type="submit" disabled={ is_loading }>Login</button>
+                <button type="submit" disabled={ isLoading }>Login</button>
             </form>
         </>
     );
