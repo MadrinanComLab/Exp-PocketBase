@@ -712,6 +712,7 @@ function Auth(){
 
 export default Auth;
 ```
+If you want to read more about `react-query`, here is the [official documentation](https://tanstack.com/query/v4/docs/react/quick-start).
 
 ----
 ### Did You Like This Experiment?
