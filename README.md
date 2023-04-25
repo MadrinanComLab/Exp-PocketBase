@@ -601,6 +601,118 @@ function Auth(){
 export default Auth;
 ```
 
+### Destructuring API call to PocketBase
+In this part of the documentation, we will be using the `react-query`, and to install this library, run this command:
+```
+npm install react-query
+```
+
+<br/>
+
+Before we proceed to destructuring, we have to do the following on `App.js` to be able to implement the `react-query` and do the destructuring:
+```javascript
+import Auth from "Auth";
+
+/* Import the necessary functions */
+import { QueryClientProvider, QueryClient } from "react-query";
+
+/* Initialize the QueryClient */
+const queryClient = new QueryClient();
+
+function App() {
+    return (
+        {/* Wrap the Auth component with QueryClientProvider and use queryClient as client */}
+        <QueryClientProvider client={ queryClient }>
+            <Auth/>
+        </QueryClientProvider>
+    );
+}
+
+export default App;
+```
+
+<br/>
+
+`UseLogin.js` will be looked like this after the destructuring:
+```javascript
+import PB from "lib/pocketbase";
+
+/* useMutation was imported */
+import { useMutation } from "react-query"
+
+/* useState for is_loading was removed because react-query has built-in and it was isLoading*/
+
+function UseLogin(){
+    /* Because login() function was used as argument to useMutation, we no longer need to wrap it with try catch */
+    async function login({ email, password }){
+        /* This function was a custom function of handleSubmit() */
+        const auth_data = await PB
+            .collection("users")
+            .authWithPassword(email, password);
+    }
+
+    /* login() was passed in useMutation as argument */
+    return useMutation(login)
+}
+
+export default UseLogin;
+```
+
+<br/>
+
+And because of these changes, the `Auth.js` will looked like this:
+```javascript
+import UseLogin from "hooks/UseLogin";
+import UseLogout from "hooks/UseLogout";
+import PB from "lib/pocketbase";
+import { useForm } from "react-hook-form";
+
+function Auth(){
+    const logout = UseLogout();
+    const { 
+        /* "mutate" will be used to invoke the login() function */
+        mutate, 
+        /* "is_loading" is now isLoading() which is available to useMutation() by default */
+        isLoading, 
+        /* isError was also available to useMutation() by default */
+        isError 
+    } = UseLogin();
+    const { register, handleSubmit, reset } = useForm();
+    const is_logged_in = PB.authStore.isValid;
+
+    async function onSubmit(data){
+        mutate(data);
+        reset();
+    }
+
+    if(is_logged_in){
+        return (
+            <>
+                {/* If a user has logged in, display the email address */}
+                <h1>Logged In: { is_logged_in && PB.authStore.model.email }</h1>
+                <button onClick={ logout }>Log Out</button>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <h1>Welcome to Login Page!</h1>
+            { isLoading && <p>Loading...</p> }
+            { isError && <p>Invalid email or password</p> }
+
+            <form onSubmit={ handleSubmit(onSubmit) }>
+                <input type="text" placeholder="email" {...register("email")}/>
+                <input type="password" placeholder="password" {...register("password")}/>
+                <button type="submit" disabled={ isLoading }>Login</button>
+            </form>
+        </>
+    );
+}
+
+export default Auth;
+```
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
