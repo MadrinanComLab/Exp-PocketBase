@@ -737,7 +737,7 @@ Now, click the `Generate a new SMTP key`, a modal should appear, and you may put
 
 After you click the `Generate` button, the SMTP key of Sendinblue should appear, copy that and don't loose it.
 
-### Setting up SMTP in PocketBase
+### Setting up SMTP Server in PocketBase
 To set up the SMTP in `PocketBase`, go to the [admin UI home page](http://127.0.0.1:8090/_/?#/collections?collectionId=_pb_users_auth_&filter=&sort=). Then click  the setting icon, and click on `Mail Settings`. You shoul be able to see this page:
 ![image](https://user-images.githubusercontent.com/74145874/234640342-6fe3603e-76ae-4738-959f-ea6a8f3d8c9e.png)
 
