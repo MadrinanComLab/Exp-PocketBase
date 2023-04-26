@@ -714,6 +714,50 @@ export default Auth;
 ```
 If you want to read more about `react-query`, here is the [official documentation](https://tanstack.com/query/v4/docs/react/quick-start).
 
+## Sending Verification Emails (with Sendinblue SMTP)
+In this part of the experiment, we will be using `Sendinblue` to send emails. If you don't have account in 'Sendinblue', you may create your own in this [link](https://onboarding.sendinblue.com/account/register).<br/>
+
+### Setting up your Sendinblue Account
+Once you are done creating your own account, you should see this page:
+![image](https://user-images.githubusercontent.com/74145874/234631809-550e7d55-a7ba-49e7-ba03-04da3e13b2ec.png)
+
+<br/>
+
+Now, click the `Transactional`, and click the `Settings` in the left navigation bar. You should be able to see this page:
+![image](https://user-images.githubusercontent.com/74145874/234632518-148ad164-2ea4-47f2-a606-c955d5bfd4c7.png)
+
+<br/>
+
+Once you are there, click the `Configuration`, and `Get Your SMTP key`. You should be on this page:
+![Sendinblue](https://user-images.githubusercontent.com/74145874/234636519-e829a46e-c7ed-4d7a-acfb-943ffbe1decd.jpg)
+
+<br/>
+
+Now, click the `Generate a new SMTP key`, a modal should appear, and you may put any key you want. In my case, I use `lab_exp`. Then click the `Generate` button.<br/>
+
+After you click the `Generate` button, the SMTP key of Sendinblue should appear, copy that and don't loose it.
+
+### Setting up SMTP in PocketBase
+To set up the SMTP in `PocketBase`, go to the [admin UI home page](http://127.0.0.1:8090/_/?#/collections?collectionId=_pb_users_auth_&filter=&sort=). Then click  the setting icon, and click on `Mail Settings`. You shoul be able to see this page:
+![image](https://user-images.githubusercontent.com/74145874/234640342-6fe3603e-76ae-4738-959f-ea6a8f3d8c9e.png)
+
+<br/>
+
+Now, toggle the `Use SMTP mail server (recommended)`. A user interface for configuring your SMTP mail server would appear. Remember the SMTP key you copied earlier? You'll be pasting that in `password` field.
+![image](https://user-images.githubusercontent.com/74145874/234645032-620fd19e-09db-4295-8b9d-05d202d7b414.png)
+
+<br/>
+
+For username field, go back to Sendinblue, and close the modal for SMTP key. Copy the `login`:
+![Sendinblue(1)](https://user-images.githubusercontent.com/74145874/234646133-41ff7ea8-22fe-4cb0-a4c2-62eb3ec82dbd.jpg)
+
+<br/>
+
+For `SMTP Server Host` field, paste this `smtp-relay.sendinblue.com` which can be seen back in Sendinblue page. Then you may now click the `Save changes`.<br/>
+
+`Send test email` will appear and when you click that you can test if the configuration you made is working.
+![Sendinblue(2)](https://user-images.githubusercontent.com/74145874/234647898-bdb1f83f-5070-4fb8-972c-694676149814.jpg)
+
 ----
 ### Did You Like This Experiment?
 Stay tuned for upcoming projects and experiments by following me on the following accounts:
