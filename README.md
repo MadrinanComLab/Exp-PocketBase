@@ -758,12 +758,37 @@ For `SMTP Server Host` field, paste this `smtp-relay.sendinblue.com` which can b
 `Send test email` will appear and when you click that you can test if the configuration you made is working.
 ![Sendinblue(2)](https://user-images.githubusercontent.com/74145874/234647898-bdb1f83f-5070-4fb8-972c-694676149814.jpg)
 
-<em><b>NOTE:</b></em> In `PocketBase`, there are 2 types of collections:
-
+### PocketBase Collection Types
+In `PocketBase`, there are 2 types of collections:
 - <b>Base Collection</b> - is the default collection type and you can use it for any type of data.
 - <b>Auth Collection</b> - contains extra fields to manage users, like username, email, and verified. Example of `Auth collection` is the PocketBase default users collections.
 
 <em><b>Source:</b></em> https://www.makeuseof.com/pocketbase-what-and-how/#:~:text=Creating%20a%20Collection%20in%20PocketBase&text=A%20collection%20can%20either%20be,username%2C%20email%2C%20and%20verified.
+
+### Getting the Records
+In getting the records in PocketBase, here is the example from the [official documentation](https://pocketbase.io/docs/api-records):
+```javascript
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('http://127.0.0.1:8090');
+
+...
+
+const record1 = await pb.collection('posts').getOne('RECORD_ID', {
+    expand: 'relField1,relField2.subRelField',
+});
+```
+
+<br/>
+
+This is how we implement it in `hooks/UseVerified.js`:
+```javascript
+const user_id = PB.authStore.model.id;
+const user_data = await PB.collection("users").getOne(user_id);
+
+setIsVerified(user_data.verified);
+```
+
 
 ----
 ### Did You Like This Experiment?
