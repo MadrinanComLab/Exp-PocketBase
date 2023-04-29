@@ -28,6 +28,7 @@ function Auth(){
             <>
                 {/* If a user has logged in, display the email address */}
                 <h1>Logged In: { is_logged_in && PB.authStore.model.email }</h1>
+                <p>Verified: false</p>
                 <button onClick={ logout }>Log Out</button>
             </>
         );
