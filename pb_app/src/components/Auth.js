@@ -1,10 +1,12 @@
 import UseLogin from "hooks/UseLogin";
 import UseLogout from "hooks/UseLogout";
+import UseVerified from "hooks/UseVerified";
 import PB from "lib/pocketbase";
 import { useForm } from "react-hook-form";
 
 function Auth(){
     const logout = UseLogout();
+    const { is_verified } = UseVerified();
     const { mutate, isLoading, isError } = UseLogin();
     const { register, handleSubmit, reset } = useForm();
     const is_logged_in = PB.authStore.isValid;
@@ -28,7 +30,7 @@ function Auth(){
             <>
                 {/* If a user has logged in, display the email address */}
                 <h1>Logged In: { is_logged_in && PB.authStore.model.email }</h1>
-                <p>Verified: false</p>
+                <p>Verified: { is_verified.toString() }</p>
                 <button onClick={ logout }>Log Out</button>
             </>
         );

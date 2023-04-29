@@ -1,4 +1,4 @@
-import Auth from "Auth";
+import Auth from "components/Auth";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 const queryClient = new QueryClient();
