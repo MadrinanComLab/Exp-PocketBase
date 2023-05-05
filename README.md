@@ -789,6 +789,44 @@ const user_data = await PB.collection("users").getOne(user_id);
 setIsVerified(user_data.verified);
 ```
 
+### Sending the Email Verification
+To start off, we need the following:
+- First, a button that will send email verification.
+- Then, a function that will handle the click event for sending email verification.
+- Lastly, an indicator whether the user is verified or not.<br/>
+
+Earlier, the `UseVerified.js was mentioned`, add the following function to that file:
+```javascript
+async function requestVerification(){
+    const email = PB.authStore.model.email;
+    const response = await PB.collection("users").requestVerification(email);
+
+    if(response){
+        alert("Verification email sent! Check your inbox.");
+    }
+}
+```
+I know that you may not catch up with the changes in `UseVerified.js`, you may look at the [code](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js).<br/>
+
+Now, we're done with the function that will handle the sending of email. In `Auth.js`, import the `UseVerified` custom hook:
+```javascript
+import UseVerified from "hooks/UseVerified";
+...
+const { is_verified, requestVerification } = UseVerified();
+```
+
+Now, create the indicator and the button in `Auth.js`:
+```javascript
+<p>Verified: { is_verified.toString() }</p>
+{ !is_verified && <button onClick={requestVerification}>Send Verification</button> }
+```
+You may look where the code added [here](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js).<br/>
+
+In testing it, you should use your email account, and you should be able to received this email once you test it:
+![Verified](https://user-images.githubusercontent.com/74145874/236542192-fe1524a1-bf82-4c80-878c-37440683f95b.png)
+
+Click the `Verify` button in the email, and return to your React app, refresh it. The `Verified` should have a value of `true` now.
+
 
 ----
 ### Did You Like This Experiment?
