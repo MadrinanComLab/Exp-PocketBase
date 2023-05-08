@@ -28,9 +28,25 @@ function UseVerified(){
             checkVerified();
         }
     }, []);
+    
+    /**
+     * DOCU: Function that will handle the sending of email verification.
+     * Triggered: This function will be triggered when user click the "Send Verification" button.
+     * Last Update: May 6, 2023
+     * @function
+     * @memberOf UseVerified
+     * @author MadriñanComputerLab
+     */
+    async function requestVerification(){
+        const email = PB.authStore.model.email;
+        const response = await PB.collection("users").requestVerification(email);
 
-    // TODO: Write documentation on how the fetching of data was done in PocketBase. Include also the official documentation.
-    return { is_verified };
+        if(response){
+            alert("Verification email sent! Check your inbox.");
+        }
+    }
+
+    return { is_verified, requestVerification };
 }
 
 export default UseVerified;
