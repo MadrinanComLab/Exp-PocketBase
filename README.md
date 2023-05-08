@@ -714,7 +714,7 @@ export default Auth;
 ```
 If you want to read more about `react-query`, here is the [official documentation](https://tanstack.com/query/v4/docs/react/quick-start).
 
-## Sending Verification Emails (with Sendinblue SMTP)
+## Sending Verification Emails with Brevo (formerly Sendinblue) SMTP
 In this part of the experiment, we will be using `Sendinblue` to send emails. If you don't have account in 'Sendinblue', you may create your own in this [link](https://onboarding.sendinblue.com/account/register).<br/>
 
 ### Setting up your Sendinblue Account
@@ -762,6 +762,8 @@ For `SMTP Server Host` field, paste this `smtp-relay.sendinblue.com` which can b
 In `PocketBase`, there are 2 types of collections:
 - <b>Base Collection</b> - is the default collection type and you can use it for any type of data.
 - <b>Auth Collection</b> - contains extra fields to manage users, like username, email, and verified. Example of `Auth collection` is the PocketBase default users collections.
+
+This was discussed because later we will be creating a simple way of authenticating user.
 
 <em><b>Source:</b></em> https://www.makeuseof.com/pocketbase-what-and-how/#:~:text=Creating%20a%20Collection%20in%20PocketBase&text=A%20collection%20can%20either%20be,username%2C%20email%2C%20and%20verified.
 
