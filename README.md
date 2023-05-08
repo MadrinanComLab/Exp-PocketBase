@@ -85,7 +85,12 @@ Just in case that you have forgotten your password. What you can do is:<br/>
 <b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
 <b>5.</b> Then you can now set your new email and password. <br/>
 
-<b><em>Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete the `pb_migration` because this contains the structure of your database. You may delete it unless you intended to delete the structure of database. But for just to regain access the admin side of your database, just delete the `pb_data`.
+## Dangers of Deleting `pb_data`
+Deleting this folder was helpful when you forgot your password for admin UI, but deleting this will also affected the configuration you set in you PocketBase application. 
+
+Later on, configuring mail settings of PocketBase will discussed in this documentation.
+
+<b><em>Addtional Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete the `pb_migration` because this contains the structure of your database. You may delete it unless you intended to delete the structure of database. But for just to regain access the admin side of your database, just delete the `pb_data`.
 
 ## Creating New Collection
 The admin UI was straightforward, but in case that you are hesitant here is a brief introduction:
