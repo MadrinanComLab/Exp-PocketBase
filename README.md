@@ -758,6 +758,20 @@ For `SMTP Server Host` field, paste this `smtp-relay.sendinblue.com` which can b
 `Send test email` will appear and when you click that you can test if the configuration you made is working.
 ![Sendinblue(2)](https://user-images.githubusercontent.com/74145874/234647898-bdb1f83f-5070-4fb8-972c-694676149814.jpg)
 
+### Error in Setting up PocketBase Mail Settings
+This is an optional part of the documentation in case you encountered an error while setting up the mail settings of `PocketBase`.<br/>
+
+During the experiment at the lab, I encounter this error:
+![pb-error](https://user-images.githubusercontent.com/74145874/236878865-afa55a60-f983-4abe-986b-4a4204b2bbe7.png)
+
+To resolved this issue, delete the following files:
+- `CHANGELOG.md`
+- `LICENSE.md`
+- `pocketbase.exe`
+- pb_data <br/>
+
+Since you deleted the `pb_data`. you have to repeat the configuration of PocketBase mail settings and create you admin account for Admin UI. You may read the [Dangers of Deleting pb_data](#create-a-link-for-this) included in this documentation.
+
 ### PocketBase Collection Types
 In `PocketBase`, there are 2 types of collections:
 - <b>Base Collection</b> - is the default collection type and you can use it for any type of data.
