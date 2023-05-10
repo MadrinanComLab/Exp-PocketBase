@@ -841,13 +841,96 @@ Now, create the indicator and the button in `Auth.js`:
 <p>Verified: { is_verified.toString() }</p>
 { !is_verified && <button onClick={requestVerification}>Send Verification</button> }
 ```
+
+Your `UseVerified.js` should look like the following:
+```javascript
+import {  useState, useEffect } from "react";
+import PB from "lib/pocketbase";
+
+function UseVerified(){
+    const [ is_verified, setIsVerified ] = useState(false);
+
+    useEffect(() => {
+        async function checkVerified(){
+            const user_id = PB.authStore.model.id;
+            const user_data = await PB.collection("users").getOne(user_id);
+
+            console.log("Fetch data: ", user_data);
+            setIsVerified(user_data.verified);
+        }
+
+        const is_logged_in = PB.authStore.isValid;
+
+        /* Invoke checkVerified() function if the user is logged in */
+        if(is_logged_in){
+            checkVerified();
+        }
+    }, []);
+    
+    async function requestVerification(){
+        const email = PB.authStore.model.email;
+        const response = await PB.collection("users").requestVerification(email);
+
+        if(response){
+            alert("Verification email sent! Check your inbox.");
+        }
+    }
+
+    return { is_verified, requestVerification };
+}
+
+export default UseVerified;
+```
 You may look where the code added [here](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js).<br/>
 
 In testing it, you should use your email account, and you should be able to received this email once you test it:
 ![Verified](https://user-images.githubusercontent.com/74145874/236542192-fe1524a1-bf82-4c80-878c-37440683f95b.png)
 
-Click the `Verify` button in the email, and return to your React app, refresh it. The `Verified` should have a value of `true` now.
+Click the `Verify` button in the email, and return to your React app, refresh it. The `Verified` should have a value of `true` now.<br/>
 
+## Automatic Re-fetching with the useQuery Hook
+In this chapter of the documentation, we will be making a changes from to the app from previous chapter and enabling it to reflect with the changes that is happening in the database (PocketBase).
+
+In order to do this, we will be using `useQuery` of React, and you may visit the official documentation by clicking [this](https://tanstack.com/query/v4/docs/react/reference/useQuery).
+
+There will be a huge changes in `UseVerified.js`, first import the `useQuery`:
+```javascript
+import { useQuery } from "react-query";
+```
+
+Then the `UseVerified()` will have a different return value:
+```javascript
+return useQuery({
+    queryFn: checkVerified,
+    queryKey: [ "check-verified", user_id ]
+});
+```
+
+This is the last chapter in this documentation, you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js) to se the whole changes in `UseVerified.js`. There were minor changes in `Auth.js` as well, you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js) to see the changes.
+
+### Explaining the Attributes of `useQuery` Option
+Keys in the option of `useQuery` was case sensitive. For example, you cannot make queryFn into queryFunction or other keys that you may wish to use.
+
+The object that is used as argument is called `options` and each of its attribute has different purpose:
+
+- `queryFn` - The function you will assign here would be responsible for fetching the data you needed.
+
+<em><b>NOTE:</b></em> Since `checkVerified`  was used to be the value of `queryFunction`, the return value of it will change:
+```javascript
+return user_data.verified
+```
+
+- `queryKey` - This will be used for data caching and the value of `"check-verified"` will be the key and the `user_id` is the second argument, which in this case will be use to query user by its record id.
+
+<em><b>NOTE:</b></em> The value of `user_id` will be coming from the code snippet below. Remember, this will have a value when you logs a user then it became `undefined` when no user was logged in, and that is why optional chaining was implemented.
+```javascript
+
+...
+export default function UseVerified(){
+    const user_id = PB.authStore.model?.id;
+    ...
+}
+```
 
 ----
 ### Did You Like This Experiment?
