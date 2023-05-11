@@ -10,6 +10,7 @@ This experiment initiated in April 9, 2023
 
 
 <section id="PocketBase-Introduction"></section>
+
 ## Introduction to PocketBase
 `PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
 
@@ -18,6 +19,7 @@ I know that my introduction to PocketBase was too short to describe it, so here 
 You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/>
 
 <section id="How-to-Run-PocketBase"></section>
+
 ## How to Run PocketBase?
 Once you've downloaded `PocketBase` and it was now in `Downloads`, do the following:<br/>
 <b>1.</b> Extract the ZIP file which you downloaded.<br/>
