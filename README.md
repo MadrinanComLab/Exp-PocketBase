@@ -2,17 +2,22 @@
 ![PocketBase-Experiment](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/e8b62d14-7886-4e93-836f-f688fc52a087)
 
 <b>Reference for this experiment:</b> https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
-
 This experiment initiated in April 9, 2023
 
+## Table of Contents
+- [Introduction to PocketBase](#PocketBase-Introduction)
+- [How to Run PocketBase?](#How-to-Run-PocketBase)
+
+
+<section id="PocketBase-Introduction"></section>
 ## Introduction to PocketBase
 `PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
 
 I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to video of Fireship where he full introduce PocketBase.<br/>
 
-You can download `PocketBase` using the link below:<br/>
-<b>•</b> https://pocketbase.io/docs
+You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/>
 
+<section id="How-to-Run-PocketBase"></section>
 ## How to Run PocketBase?
 Once you've downloaded `PocketBase` and it was now in `Downloads`, do the following:<br/>
 <b>1.</b> Extract the ZIP file which you downloaded.<br/>
