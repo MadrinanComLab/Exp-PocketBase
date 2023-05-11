@@ -4,18 +4,21 @@
 ![PocketBase-Experiment](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/e8b62d14-7886-4e93-836f-f688fc52a087)
 
 <b>Reference for this experiment:</b> https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
-This experiment initiated in April 9, 2023
+This experiment was initiated on April 9, 2023.
 
 ## Table of Contents
 - [Introduction to PocketBase](#pocketbase-introduction)
 - [How to Run PocketBase?](#how-to-run-pocketbase)
+- [Explaining the Links](#explaining-the-links)
+- [Folders in a Pre-Built Pocket Base](#pb-pre-built-folders)
+- [User-Defined Folder](#user-defined-folder)
 
 <section id="pocketbase-introduction"></section>
 
 ## Introduction to PocketBase
-`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
+`PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handle backend functions like file upload, saving data to a database, etc.<br/>
 
-I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to video of Fireship where he full introduce PocketBase.<br/>
+I know that my introduction to PocketBase was too short to describe it, so here is the [link](https://www.youtube.com/watch?v=Wqy3PBEglXQ) to a video of Fireship where he fully introduces PocketBase.</br>
 
 You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/>
 
@@ -25,9 +28,9 @@ You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/
 
 ## How to Run PocketBase?
 Once you've downloaded `PocketBase` and it was now in `Downloads`, do the following:<br/>
-<b>1.</b> Extract the ZIP file which you downloaded.<br/>
-<b>2.</b> Rename it into `PocketBase` or however you like but keep it short.<br/>
-<b>3.</b> Go to that directory, ex.: `Downloads/PocketBase`.<br/>
+<b>1.</b> Extract the ZIP file that you downloaded.<br/>
+<b>2.</b> Rename it `PocketBase` or however you like, but keep it short.<br/>
+<b>3.</b> Go to that directory, e.g., `Downloads/PocketBase`.<br/>
 <b>4.</b> Now enter this command:
 ```
 ./pocketbase serve
@@ -47,16 +50,27 @@ pocketbase serve
 
 <em>[Back to top](#top)</em>
 
+<section id="explaining-the-links"></section>
+
 ## Explaining the Links
 Based on the official documentation, the meaning of the links are the following:<br/>
 <b>•</b> `http://127.0.0.1:8090` - if pb_public directory exists, serves the static content from it (html, css, images, etc.)<br/>
 <b>•</b> `http://127.0.0.1:8090/_/` - Admin dashboard UI<br/>
 <b>•</b> `http://127.0.0.1:8090/api/` - REST API<br/>
 
-## Folders in Pre-Built PocketBase
+<em>[Back to top](#top)</em>
+
+<section id="pb-pre-built-folders"></section>
+
+## Folders in a Pre-Built Pocket Base
 The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the executable:<br/>
 <b>•</b> `pb_data` - stores your application data, uploaded files, etc. (usually should be added in `.gitignore`).<br/>
-<b>•</b> `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).<br/><br/>
+<b>•</b> `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).
+
+<em>[Back to top](#top)</em>
+<br/><br/>
+
+<section id="user-defined-folder"></section>
 
 ## User-Defined Folder
 You have to add the following folder:<br/>
@@ -80,6 +94,8 @@ You have to add the following folder:<br/>
 ```
 http://127.0.0.1:8090/
 ``` 
+
+<em>[Back to top](#top)</em>
 
 ## Adding React Application to PocketBase App:
 To add React app, just do the following command:
