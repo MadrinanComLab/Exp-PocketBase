@@ -4,12 +4,13 @@
 <b>Reference for this experiment:</b> https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
 This experiment initiated in April 9, 2023
 
+<section id="table-of-contents"></section>
+
 ## Table of Contents
-- [Introduction to PocketBase](#PocketBase-Introduction)
-- [How to Run PocketBase?](#How-to-Run-PocketBase)
+- [Introduction to PocketBase](#pocketbase-introduction)
+- [How to Run PocketBase?](#how-to-run-pocketbase)
 
-
-<section id="PocketBase-Introduction"></section>
+<section id="pocketbase-introduction"></section>
 
 ## Introduction to PocketBase
 `PocketBase` is similar to `Firebase` (a Google service) and `Supabase` (an open-source Firebase alternative), which handles the backend function like file upload, saving data to a database, etc.<br/>
@@ -18,9 +19,9 @@ I know that my introduction to PocketBase was too short to describe it, so here 
 
 You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/>
 
-<em><a href="#">Back to top</a></em>
+<em>[Back to top](#table-of-contents)</em>
 
-<section id="How-to-Run-PocketBase"></section>
+<section id="how-to-run-pocketbase"></section>
 
 ## How to Run PocketBase?
 Once you've downloaded `PocketBase` and it was now in `Downloads`, do the following:<br/>
