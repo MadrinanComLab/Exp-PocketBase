@@ -15,6 +15,8 @@ This experiment was initiated on April 9, 2023.
 - [Adding a React Application to a PocketBase App](#add-react-app-to-pb)
 - [Regaining Access to the PocketBase Admin UI](#regain-access-to-pb-admin-ui)
 - [Dangers of Deleting pb_data](#dangers-of-deleting-pb-data)
+- [Creating a New Collection](#creating-new-collection)
+- [React and PocketBase SDK Setup](#"react-pb-sdk-setup)
 
 <section id="pocketbase-introduction"></section>
 
@@ -138,44 +140,50 @@ Later on, configuring the mail settings of PocketBase will be discussed in this 
 
 <em>[Back to top](#top)</em>
 
-## Creating New Collection
-The admin UI was straightforward, but in case that you are hesitant here is a brief introduction:
+<section id="creating-new-collection"></section>
+
+## Creating a New Collection
+The admin UI was straightforward, but in case you are hesitant, here is a brief introduction:
 ![Steps-1-to-3](https://user-images.githubusercontent.com/74145874/231815970-34dd300e-e440-42aa-9a98-dcd205501a93.jpg)
-<b>1.</b> Start with creating your collection. After you click that, a modal will appear on the right.<br/>
+<b>1.</b> Start with creating your collection. After you click that, a modal will appear on the right. <br/>
 <b>2.</b> Name your collection however you want. Think of a collection as a table, and you can see in the suggestion that it follows the naming convention of SQL (where tables are named plural).<br/>
-<b>3.</b> After naming your first collection, you can then create the first field in your collection.<br/>
+<b>3.</b> After naming your first collection, you can then create the first field in your collection.<br/>
 
 ![Steps-4-to-5](https://user-images.githubusercontent.com/74145874/231820524-85f33754-359c-4846-9c39-37ecccbc2594.jpg)
-<b>4.</b> After clicking the `New field` button, an options for data type would appear.<br/>
-<b>5.</b> Name your first field here. Think of field as column in your database.<br/>
+<b>4.</b> After clicking the `New field` button, options for data type would appear.<br/>
+<b>5.</b> Name your first field here. Think of a field as a column in your database.<br/>
 ![Steps-6](https://user-images.githubusercontent.com/74145874/231826418-d72eb2df-2c30-4430-9203-4b417951c929.jpg)
-<b>6.</b> If you click the cog icon in inline with your field, an option for min and max length would appear as well as the regex.<br/>
+<b>6.</b> If you click the cog icon inline with your field, an option for min and max length would appear as well as the regex.<br/>
 ![Steps-7](https://user-images.githubusercontent.com/74145874/231828239-2abd1e31-f38d-41c9-a649-6b2304a60b5b.jpg)
 ![PB-Index-Modal](https://user-images.githubusercontent.com/74145874/231829002-5dd793e2-a7d6-4dab-8f07-3c0a90aa4873.jpg)
-<b>7.</b> If you click the "New index" a modal would appear for you to setup you indexes.<br/>
+<b>7.</b> If you click "New index," a modal will appear for you to setup your indexes.<br/>
 
 Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/sql/sql_create_index.asp)<br/>
 
-<b>8.</b> You can now save your first collection. Ow, wait, you aren't able to save it? Well, that was because there is already a "users" collection that initially included in your first PocketBase application.<br/>
+<b>8.</b> You can now save your first collection. Ow, wait, you aren't able to save it? Well, that was because there is already a "users" collection that was initially included in your first PocketBase application.<br/>
 
-I apologize about it, this README was created while firstly exploring PB.
+I apologize about it; this README was created while first exploring PocketBase.
+
+<em>[Back to top](#top)</em>
+
+<section id="react-pb-sdk-setup"></section>
 
 ## React and PocketBase SDK Setup
-In the tutorial, the following files were added in the root folder of `pb_app`:<br/>
+In the tutorial, the following files were added to the root folder of `pb_app`:<br/>
 <b>•</b> <em>.env.local</em><br/>
-<b>•</b> <em>jsconfig.json</em> - In the code here, what it does is make `src` folder as root directory for importing and avoid the example imports below:<br/>
+<b>•</b> <em>jsconfig.json</em> - In the code here, what it does is make the `src` folder the root directory for importing and avoid the example imports below.:<br/>
 ```javascript
 import x from "../../../folder/file";
 ```
 <br/>
 
 <b>•</b> Delete the following in `pb_app/src`:<br/>
-    <b>•</b> App.css<br/>
-    <b>•</b> App.test.js<br/>
-    <b>•</b> index.css<br/>
-    <b>•</b> logo.svg<br/>
-    <b>•</b> reportWebVitals.js<br/>
-    <b>•</b> setupTest.js<br/>
+    <b>•</b> <em>App.css</em><br/>
+    <b>•</b> <em>App.test.js</em><br/>
+    <b>•</b> <em>index.css</em><br/>
+    <b>•</b> <em>logo.svg</em><br/>
+    <b>•</b> <em>reportWebVitals.js</em><br/>
+    <b>•</b> <em>setupTest.js</em><br/>
 <b>•</b> Remove the following in `index.js`:<br/>
 
 ```javascript
@@ -214,13 +222,13 @@ import './App.css';
 ```
 <br/>
 
-<b>•</b> You can now add the JavaScript PocketBase SDK, run the following command in your terminal:
+<b>•</b> You can now add the JavaScript PocketBase SDK by running the following command in your terminal:
 ```
 npm install pocketbase --save
 ```
-<b><em>Note:</em></b> Make sure you are in `pb_app` directory, where the React app was.<br/>
+<b><em>Note:</em></b> Make sure you are in the `pb_app` directory, where the React app is.<br/>
 
-<b>•</b> Then create `/lib/pocketbase.js` file inside `src` folder, and add the following code snippet:
+<b>•</b> Then create the `/lib/pocketbase.js` file inside the `src` folder and add the following code snippet:
 
 ```javascript
 import PocketBase from "pocketbase";
@@ -232,11 +240,13 @@ export default pb;
 
 <b><em>Note:</em></b> The value of `REACT_APP_PB_URL` was `http://127.0.0.1:8090`, and it was in the `.env.local`
 
-<b>•</b> Now, to test if everything is working run the following command:
+<b>•</b> Now, to test if everything is working, run the following command:
 
 ```
 npm start
 ```
+
+<em>[Back to top](#top)</em>
 
 ## Authentication (With react-hook-form)
 `PocketBase` provides a documentation about their authentacation, you can read it [here](https://pocketbase.io/docs/authentication/), in case you want to read more about it.<br/>
