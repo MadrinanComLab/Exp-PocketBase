@@ -16,7 +16,7 @@ This experiment was initiated on April 9, 2023.
 - [Regaining Access to the PocketBase Admin UI](#regain-access-to-pb-admin-ui)
 - [Dangers of Deleting pb_data](#dangers-of-deleting-pb-data)
 - [Creating a New Collection](#creating-new-collection)
-- [React and PocketBase SDK Setup](#"react-pb-sdk-setup)
+- [React and PocketBase SDK Setup](#react-pb-sdk-setup)
 
 <section id="pocketbase-introduction"></section>
 
