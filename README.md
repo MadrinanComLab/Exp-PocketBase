@@ -12,6 +12,9 @@ This experiment was initiated on April 9, 2023.
 - [Explaining the Links](#explaining-the-links)
 - [Folders in a Pre-Built Pocket Base](#pb-pre-built-folders)
 - [User-Defined Folder](#user-defined-folder)
+- [Adding a React Application to a PocketBase App](#add-react-app-to-pb)
+- [Regaining Access to the PocketBase Admin UI](#regain-access-to-pb-admin-ui)
+- [Dangers of Deleting pb_data](#dangers-of-deleting-pb-data)
 
 <section id="pocketbase-introduction"></section>
 
@@ -74,8 +77,8 @@ The prebuilt PocketBase executable will automatically create and manage 2 new di
 
 ## User-Defined Folder
 You have to add the following folder:<br/>
-<b>•</b> `pb_public` - This is the folder that will be hosted by PocketBase. Here is an example:<br/>
-<b>1.</b> After creating the `pb_public`, create a file inside this folder named `index.html` and copy paste the following code:
+`pb_public` - This is the folder that will be hosted by PocketBase. Here is an example:<br/>
+<b>1.</b> After creating the `pb_public` folder, create a file inside this folder named `index.html` and copy and paste the following code:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -97,8 +100,10 @@ http://127.0.0.1:8090/
 
 <em>[Back to top](#top)</em>
 
-## Adding React Application to PocketBase App:
-To add React app, just do the following command:
+<section id="add-react-app-to-pb"></section>
+
+## Adding a React Application to a PocketBase App:
+To add the React app, just do the following command:
 ```
 npm create react-app <app_name>
 ```
@@ -108,20 +113,30 @@ Example:
 npm create react-app pb_app
 ```
 
-## Forgot your Password for PocketBase Admin?
-Just in case that you have forgotten your password. What you can do is:<br/>
-<b>1.</b> Stop the server of PocketBase in your computer (if it was running).<br/>
+<em>[Back to top](#top)</em>
+
+<section id="regain-access-to-pb-admin-ui"></section>
+
+## Regaining Access to the PocketBase Admin UI
+Just in case you have forgotten your password. What you can do is:<br/>
+<b>1.</b> Stop the server of PocketBase on your computer (if it is running).<br/>
 <b>2.</b> Delete the `pb_data`<br/>
 <b>3.</b> Run your PocketBase<br/>
 <b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
-<b>5.</b> Then you can now set your new email and password. <br/>
+<b>5.</b> Then you can now set your new email and password. <br/>
+
+<em>[Back to top](#top)</em>
+
+<section id="dangers-of-deleting-pb-data"></section>
 
 ## Dangers of Deleting `pb_data`
-Deleting this folder was helpful when you forgot your password for admin UI, but deleting this will also affected the configuration you set in you PocketBase application. 
+Deleting this folder was helpful when you forgot your password for the admin UI, but deleting it will also affect the configuration you set in your PocketBase application. 
 
-Later on, configuring mail settings of PocketBase will discussed in this documentation.
+Later on, configuring the mail settings of PocketBase will be discussed in this documentation.
 
-<b><em>Addtional Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete the `pb_migration` because this contains the structure of your database. You may delete it unless you intended to delete the structure of database. But for just to regain access the admin side of your database, just delete the `pb_data`.
+<b><em>Additional Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete `pb_migration` because this contains the structure of your database. You may delete it unless you intend to delete the structure of the database. But to just regain access to the admin side of your database, just delete the `pb_data`.
+
+<em>[Back to top](#top)</em>
 
 ## Creating New Collection
 The admin UI was straightforward, but in case that you are hesitant here is a brief introduction:
