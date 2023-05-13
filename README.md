@@ -20,8 +20,8 @@ This experiment was initiated on April 9, 2023.
 - [Authentication (with react-hook-form)](#authentication)<br/>
 • [Example #1](authentication-example-1)<br/>
 • [Example #2](authentication-example-2)<br/>
-• [Example #3](authentication-example-3)<br/>
-- [Auth Hooks (with react-query)](auth-hooks)
+• [Example #3](authentication-example-3)
+- [Auth Hooks (with react-query)](auth-hooks)<br/>
 • [Destructuring Logout Function](destructuring-logout-function)<br/>
 • [Destructuring Login Function](destructuring-login-function)<br/>
 • [Destructuring API call to PocketBase](destructuring-api-call-to-pb)
