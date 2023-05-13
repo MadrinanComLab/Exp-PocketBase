@@ -17,6 +17,14 @@ This experiment was initiated on April 9, 2023.
 - [Dangers of Deleting pb_data](#dangers-of-deleting-pb-data)
 - [Creating a New Collection](#creating-new-collection)
 - [React and PocketBase SDK Setup](#react-pb-sdk-setup)
+- [Authentication (with react-hook-form)](#authentication)
+• [Example #1](authentication-example-1)
+• [Example #2](authentication-example-2)
+• [Example #3](authentication-example-3)
+- [Auth Hooks (with react-query)](auth-hooks)
+• [Destructuring Logout Function](destructuring-logout-function)
+• [Destructuring Login Function](destructuring-login-function)
+• [Destructuring API call to PocketBase](destructuring-api-call-to-pb)
 
 <section id="pocketbase-introduction"></section>
 
@@ -248,12 +256,16 @@ npm start
 
 <em>[Back to top](#top)</em>
 
-## Authentication (With react-hook-form)
-`PocketBase` provides a documentation about their authentacation, you can read it [here](https://pocketbase.io/docs/authentication/), in case you want to read more about it.<br/>
+<section id="authentication"></section>
 
+## Authentication (with react-hook-form)
+
+`PocketBase` provides documentation about their authentication; you can read it [here](https://pocketbase.io/docs/authentication/) if you want to read more about it.<br/>
 
 ### Examples
-The following will be a sets of different example of `PocketBase` authentication
+The following will be a set of different examples of `PocketBase` authentication.
+
+<section id="authentication-example-1"></section>
 
 #### #1
 First, create `Auth.js` in `src`. For now, the Auth component will contain the following:
@@ -294,7 +306,9 @@ export default App;
 Your browser should display something like this:
 ![ss-3](https://user-images.githubusercontent.com/74145874/233703193-e66d9942-d932-4023-8ce4-627a791e131c.png)
 
-The first example makes sense that it displays `false`, because a user haven't logged in yet, right?
+The first example makes sense that it displays `false` because a user hasn't logged in yet, right?
+
+<section id="authentication-example-2"></section>
 
 #### #2
 Now, let's level up the previous example. Still in `Auth.js`, do the following:
@@ -341,9 +355,10 @@ export default Auth;
 ```
 
 <br/>
-Before we proceed in creating the first user, let's breakdown the example code above because there was a huge change between example #1 and #2.<br/><br/>
 
-- First, is about the `React-hook-form`, which will help us to handle the sample login:
+Before we proceed with creating the first user, let's breakdown the example code above because there was a huge change between examples `#1` and `#2`.<br/><br/>
+
+- First is about the `React-hook-form`, which will help us handle the sample login:
 ```javascript
 const { register, handleSubmit } = useForm();
 ```
@@ -355,14 +370,14 @@ npm install react-hook-form
 ```
 <b><em>NOTE:</em></b> Make sure you are in `pb_app` folder before you install this npm library.<br/>
 
-- State object that will be used for simple loading indicator.
+- State object that will be used for a simple loading indicator.
 ```javascript
 const [ is_loading, setLoading ] = useState(false);
 ```
 
 <br/>
 
-- Then, the actual code for validation, there was a comment on the code to help breaking it down:
+- Then, on the actual code for validation, there was a comment on the code to help break it down:
 ```javascript
 async function login(data){
     /* This function was a custom function of handleSubmit() */
@@ -387,14 +402,16 @@ async function login(data){
 
 <br/>
 
-Now, let's create our first user, you use whatever email and password you want:
+Now, let's create our first user. You can use whatever email and password you want:
 ![sample-user](https://user-images.githubusercontent.com/74145874/233798503-2a222579-6bb3-49b7-9513-5ec14c01d545.png)
 ![sample-user(1)](https://user-images.githubusercontent.com/74145874/233798616-76b5ab3c-fe45-4c52-8198-b60847c1a52b.png)
 
-After this, you can try if it works.
+After this, you can try it to see if it works.
+
+<section id="authentication-example-3"></section>
 
 #### #3
-User can now logged in, and for the last example, we will enable users to logged out. Do the this in `Auth.js`:
+Users can now log in, and for the last example, we will enable users to log out. Do this in `Auth.js`.:
 ```javascript
 import PB from "lib/pocketbase";
 import { useState, useEffect } from "react";
@@ -458,11 +475,17 @@ function Auth(){
 export default Auth;
 ```
 
+<em>[Back to top](#top)</em>
+
+<section id="auth-hooks"></section>
+
 ## Auth Hooks (with react-query)
 In this part of the documentation, we will be destructuring the example code from previous chapter.<br/>
 
+<section id="destructuring-logout-function"></section>
+
 ### Destructuring Logout Function
-First, we'll destructure the function for logout. Create a `hooks` folder in `src`, and create `UseLogout.js`, and this will be contain the following code:
+First, we'll destructure the function for logging out. Create a `hooks` folder in `src` and create `UseLogout.js`, which will contain the following code:
 
 ```javascript
 import PB from "lib/pocketbase";
@@ -548,16 +571,16 @@ export default Auth;
 
 <br/>
 
-If you try this, it will work well, but same problem as it was from previous chapter, the credentials you've inputted will remain.<br/>
+If you try this, it will work well, but the same problem as in the previous chapter will remain: the credentials you've inputted will remain.<br/>
 
-to resolve this add the `reset` in destructuring of `useForm()`:
+To resolve this, add `reset` in the destructuring of `useForm()`:
 ```javascript
 const { register, handleSubmit, reset } = useForm();
 ```
 
 <br/>
 
-Then, add this `reset()` funciton to login function:
+Then, add this `reset()` function to the login function:
 ```javascript
 async function login(data){
     /* This function was a custom function of handleSubmit() */
@@ -581,11 +604,13 @@ async function login(data){
 
 <br/>
 
+<section id="destructuring-login-function"></section>
+
 ### Destructuring Login Function
 
-Now that we destructure the logout function using custom hook, we'll take a few steps to destructure the login as well.<br/>
+Now that we've destructured the logout function using a custom hook, we'll take a few steps to destructure the login as well.<br/>
 
-Create `UseLogin.js` and will contain the following:
+Create `UseLogin.js` and it will contain the following:
 ```javascript
 import PB from "lib/pocketbase";
 import { useState } from "react";
@@ -617,7 +642,7 @@ export default UseLogin;
 
 <br/>
 
-Since we remove login function, the `Auth.js` will looked like this:
+Since we removed the login function, `Auth.js` will look like this:
 ```javascript
 import UseLogin from "hooks/UseLogin";
 import UseLogout from "hooks/UseLogout";
@@ -661,6 +686,8 @@ function Auth(){
 
 export default Auth;
 ```
+
+<section id="destructuring-api-call-to-pb"></section>
 
 ### Destructuring API call to PocketBase
 In this part of the documentation, we will be using the `react-query`, and to install this library, run this command:
