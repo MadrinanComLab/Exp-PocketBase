@@ -18,13 +18,13 @@ This experiment was initiated on April 9, 2023.
 - [Creating a New Collection](#creating-new-collection)
 - [React and PocketBase SDK Setup](#react-pb-sdk-setup)
 - [Authentication (with react-hook-form)](#authentication)
-• [Example #1](authentication-example-1)
-• [Example #2](authentication-example-2)
-• [Example #3](authentication-example-3)
+• [Example #1](authentication-example-1)<br/>
+• [Example #2](authentication-example-2)<br/>
+• [Example #3](authentication-example-3)<br/>
 - [Auth Hooks (with react-query)](auth-hooks)
-• [Destructuring Logout Function](destructuring-logout-function)
-• [Destructuring Login Function](destructuring-login-function)
-• [Destructuring API call to PocketBase](destructuring-api-call-to-pb)
+• [Destructuring Logout Function](destructuring-logout-function)<br/>
+• [Destructuring Login Function](destructuring-login-function)<br/>
+• [Destructuring API call to PocketBase](destructuring-api-call-to-pb)<br/>
 
 <section id="pocketbase-introduction"></section>
 
