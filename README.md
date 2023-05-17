@@ -1,7 +1,7 @@
 <section id="top"></section>
 
 # Welcome to PocketBase Experiment!
-![PocketBase-Experiment](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/e8b62d14-7886-4e93-836f-f688fc52a087)
+![PocketBase-Experiment](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/b8eb6046-449e-4961-82da-dbb73c8726b7)
 
 **Reference for this experiment:** https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
 This experiment was initiated on April 9, 2023.
@@ -874,7 +874,7 @@ For the `SMTP Server Host` field, paste `smtp-relay.sendinblue.com`, which can b
 This is an optional part of the documentation in case you encountered an error while setting up the mail settings of `PocketBase`.<br/>
 
 During the experiment at the lab, I encounter this error:
-![pb-error](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/1c13cb98-bdcf-47e1-8aee-673fedf8cffd)
+![pb-error](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/4ad87af6-93ba-4255-b549-4c213f1578e2)
 
 To resolve this issue, delete the following files:
 - `CHANGELOG.md`
