@@ -3,7 +3,7 @@
 # Welcome to PocketBase Experiment!
 ![PocketBase-Experiment](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/e8b62d14-7886-4e93-836f-f688fc52a087)
 
-<b>Reference for this experiment:</b> https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
+**Reference for this experiment:** https://www.youtube.com/watch?v=rediFff54JA&t=75s<br/>
 This experiment was initiated on April 9, 2023.
 
 ## Table of Contents
@@ -153,22 +153,22 @@ Later on, configuring the mail settings of PocketBase will be discussed in this 
 ## Creating a New Collection
 The admin UI was straightforward, but in case you are hesitant, here is a brief introduction:
 ![Steps-1-to-3](https://user-images.githubusercontent.com/74145874/231815970-34dd300e-e440-42aa-9a98-dcd205501a93.jpg)
-<b>1.</b> Start with creating your collection. After you click that, a modal will appear on the right. <br/>
-<b>2.</b> Name your collection however you want. Think of a collection as a table, and you can see in the suggestion that it follows the naming convention of SQL (where tables are named plural).<br/>
-<b>3.</b> After naming your first collection, you can then create the first field in your collection.<br/>
+**1.** Start with creating your collection. After you click that, a modal will appear on the right. <br/>
+**2.** Name your collection however you want. Think of a collection as a table, and you can see in the suggestion that it follows the naming convention of SQL (where tables are named plural).<br/>
+**3.** After naming your first collection, you can then create the first field in your collection.<br/>
 
 ![Steps-4-to-5](https://user-images.githubusercontent.com/74145874/231820524-85f33754-359c-4846-9c39-37ecccbc2594.jpg)
-<b>4.</b> After clicking the `New field` button, options for data type would appear.<br/>
-<b>5.</b> Name your first field here. Think of a field as a column in your database.<br/>
+**4.** After clicking the `New field` button, options for data type would appear.<br/>
+**5.** Name your first field here. Think of a field as a column in your database.<br/>
 ![Steps-6](https://user-images.githubusercontent.com/74145874/231826418-d72eb2df-2c30-4430-9203-4b417951c929.jpg)
-<b>6.</b> If you click the cog icon inline with your field, an option for min and max length would appear as well as the regex.<br/>
+**6.** If you click the cog icon inline with your field, an option for min and max length would appear as well as the regex.<br/>
 ![Steps-7](https://user-images.githubusercontent.com/74145874/231828239-2abd1e31-f38d-41c9-a649-6b2304a60b5b.jpg)
 ![PB-Index-Modal](https://user-images.githubusercontent.com/74145874/231829002-5dd793e2-a7d6-4dab-8f07-3c0a90aa4873.jpg)
-<b>7.</b> If you click "New index," a modal will appear for you to setup your indexes.<br/>
+**7.** If you click "New index," a modal will appear for you to setup your indexes.<br/>
 
 Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/sql/sql_create_index.asp)<br/>
 
-<b>8.</b> You can now save your first collection. Ow, wait, you aren't able to save it? Well, that was because there is already a "users" collection that was initially included in your first PocketBase application.<br/>
+**8.** You can now save your first collection. Ow, wait, you aren't able to save it? Well, that was because there is already a "users" collection that was initially included in your first PocketBase application.<br/>
 
 I apologize about it; this README was created while first exploring PocketBase.
 
@@ -205,7 +205,7 @@ reportWebVitals();
 ```
 <br/>
 
-<b>•</b> Remove the following in `App.js`:<br/>
+**•** Remove the following in `App.js`:<br/>
 ```javascript
 import logo from './logo.svg';
 import './App.css';
@@ -230,13 +230,13 @@ import './App.css';
 ```
 <br/>
 
-<b>•</b> You can now add the JavaScript PocketBase SDK by running the following command in your terminal:
+**•** You can now add the JavaScript PocketBase SDK by running the following command in your terminal:
 ```
 npm install pocketbase --save
 ```
 ***Note:*** Make sure you are in the `pb_app` directory, where the React app is.<br/>
 
-<b>•</b> Then create the `/lib/pocketbase.js` file inside the `src` folder and add the following code snippet:
+**•** Then create the `/lib/pocketbase.js` file inside the `src` folder and add the following code snippet:
 
 ```javascript
 import PocketBase from "pocketbase";
@@ -246,9 +246,9 @@ const pb = new PocketBase(process.env.REACT_APP_PB_URL);
 export default pb;
 ```
 
-<b><em>Note:</em></b> The value of `REACT_APP_PB_URL` was `http://127.0.0.1:8090`, and it was in the `.env.local`
+***Note:*** The value of `REACT_APP_PB_URL` was `http://127.0.0.1:8090`, and it was in the `.env.local`
 
-<b>•</b> Now, to test if everything is working, run the following command:
+**•** Now, to test if everything is working, run the following command:
 
 ```
 npm start
@@ -368,7 +368,7 @@ To install `react-hook-form` in your project, just run the following command:
 ```
 npm install react-hook-form
 ```
-***NOTE:*** Make sure you are in `pb_app` folder before you install this npm library.<br/>
+***Note:*** Make sure you are in `pb_app` folder before you install this npm library.<br/>
 
 - State object that will be used for a simple loading indicator.
 ```javascript
@@ -506,7 +506,7 @@ function UseLogout(){
 
 export default UseLogout;
 ```
-<b><em>NOTE:</em></b> The code above was an example of React custom hooks.
+***Note:*** The code above was an example of React custom hooks.
 
 <br/>
 
@@ -862,12 +862,12 @@ Since you deleted the `pb_data`. you have to repeat the configuration of PocketB
 
 ### PocketBase Collection Types
 In `PocketBase`, there are 2 types of collections:
-- <b>Base Collection</b> - is the default collection type and you can use it for any type of data.
-- <b>Auth Collection</b> - contains extra fields to manage users, like username, email, and verified. Example of `Auth collection` is the PocketBase default users collections.
+- **Base Collection** - is the default collection type and you can use it for any type of data.
+- **Auth Collection** - contains extra fields to manage users, like username, email, and verified. Example of `Auth collection` is the PocketBase default users collections.
 
 This was discussed because later we will be creating a simple way of authenticating user.
 
-<em><b>Source:</b></em> https://www.makeuseof.com/pocketbase-what-and-how/#:~:text=Creating%20a%20Collection%20in%20PocketBase&text=A%20collection%20can%20either%20be,username%2C%20email%2C%20and%20verified.
+***Source:*** https://www.makeuseof.com/pocketbase-what-and-how/#:~:text=Creating%20a%20Collection%20in%20PocketBase&text=A%20collection%20can%20either%20be,username%2C%20email%2C%20and%20verified.
 
 ### Getting the Records
 In getting the records in PocketBase, here is the example from the [official documentation](https://pocketbase.io/docs/api-records):
@@ -998,14 +998,14 @@ The object that is used as argument is called `options` and each of its attribut
 
 - `queryFn` - The function you will assign here would be responsible for fetching the data you needed.
 
-<em><b>NOTE:</b></em> Since `checkVerified`  was used to be the value of `queryFunction`, the return value of it will change:
+***Note:*** Since `checkVerified`  was used to be the value of `queryFunction`, the return value of it will change:
 ```javascript
 return user_data.verified
 ```
 
 - `queryKey` - This will be used for data caching and the value of `"check-verified"` will be the key and the `user_id` is the second argument, which in this case will be use to query user by its record id.
 
-<em><b>NOTE:</b></em> The value of `user_id` will be coming from the code snippet below. Remember, this will have a value when you logs a user then it became `undefined` when no user was logged in, and that is why optional chaining was implemented.
+***Note:*** The value of `user_id` will be coming from the code snippet below. Remember, this will have a value when you logs a user then it became `undefined` when no user was logged in, and that is why optional chaining was implemented.
 ```javascript
 
 ...
