@@ -31,7 +31,8 @@ This experiment was initiated on April 9, 2023.
 • [Error in Setting up PocketBase Mail Settings](#error-in-setting-up-pb-mail-settings)</br>
 • [PocketBase Collection Types](#pb-collection-types)</br>
 • [Sending the Email Verification](#sending-the-email-verification)</br>
-- [Automatic Re-fetching with the useQuery Hook](#auto-refetching-wth-the-usequery-hook)
+- [Automatic Re-fetching with the useQuery Hook](#auto-refetching-wth-the-usequery-hook)</br>
+• [Explaining the Attributes of the useQuery Option](#explaining-the-attributes-of-the-usequery-option)
 
 <section id="pocketbase-introduction"></section>
 
@@ -1017,6 +1018,8 @@ return useQuery({
 ```
 This is the last chapter in this documentation; you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js) to see the whole change in `UseVerified.js`. There were minor changes in `Auth.js` as well; you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js to see the changes.
 
+<section id="explaining-the-attributes-of-the-usequery-option"></section>
+
 ### Explaining the Attributes of the `useQuery` Option
 Keys in the option of `useQuery` was case sensitive. For example, you cannot make queryFn into queryFunction or other keys that you may wish to use.
 
@@ -1040,6 +1043,8 @@ export default function UseVerified(){
     ...
 }
 ```
+
+*[Back to top](#top)*
 
 ----
 ### Did You Like This Experiment?
