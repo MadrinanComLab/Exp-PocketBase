@@ -373,6 +373,7 @@ const { register, handleSubmit } = useForm();
 ```
 
 <br/>
+
 To install `react-hook-form` in your project, just run the following command:
 ```
 npm install react-hook-form
