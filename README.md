@@ -18,13 +18,20 @@ This experiment was initiated on April 9, 2023.
 - [Creating a New Collection](#creating-new-collection)
 - [React and PocketBase SDK Setup](#react-pb-sdk-setup)
 - [Authentication (with react-hook-form)](#authentication)<br/>
-• [Example #1](authentication-example-1)<br/>
-• [Example #2](authentication-example-2)<br/>
-• [Example #3](authentication-example-3)
-- [Auth Hooks (with react-query)](auth-hooks)<br/>
-• [Destructuring Logout Function](destructuring-logout-function)<br/>
-• [Destructuring Login Function](destructuring-login-function)<br/>
-• [Destructuring API call to PocketBase](destructuring-api-call-to-pb)
+• [Example #1](#authentication-example-1)<br/>
+• [Example #2](#authentication-example-2)<br/>
+• [Example #3](#authentication-example-3)
+- [Auth Hooks (with react-query)](#auth-hooks)<br/>
+• [Destructuring Logout Function](#destructuring-logout-function)<br/>
+• [Destructuring Login Function](#destructuring-login-function)<br/>
+• [Destructuring API call to PocketBase](#destructuring-api-call-to-pb)
+- [Sending Verification Emails with Brevo (formerly Sendinblue) SMTP](#sending-verification-emails-with-brevo)</br>
+• [Setting up an SMTP Server in PocketBase](#setting-up-your-sendinblue-account)</br>
+• [Setting up an SMTP Server in PocketBase](#setting-up-an-smtp-server-in-pb)</br>
+• [Error in Setting up PocketBase Mail Settings](#error-in-setting-up-pb-mail-settings)</br>
+• [PocketBase Collection Types](#pb-collection-types)</br>
+• [Sending the Email Verification](#sending-the-email-verification)</br>
+- [Automatic Re-fetching with the useQuery Hook](#auto-refetching-wth-the-usequery-hook)
 
 <section id="pocketbase-introduction"></section>
 
@@ -802,75 +809,91 @@ export default Auth;
 ```
 If you want to read more about `react-query`, here is the [official documentation](https://tanstack.com/query/v4/docs/react/quick-start).
 
+*[Back to top](#top)*
+
+<section id="sending-verification-emails-with-brevo"></section>
+
 ## Sending Verification Emails with Brevo (formerly Sendinblue) SMTP
-In this part of the experiment, we will be using `Sendinblue` to send emails. If you don't have account in 'Sendinblue', you may create your own in this [link](https://onboarding.sendinblue.com/account/register).<br/>
+In this part of the experiment, we will be using `Sendinblue` to send emails. If you don't have account in 'Sendinblue', you may create your own in this [link](https://onboarding.sendinblue.com/account/register).
+
+In this part of the experiment, we will be using `Sendinblue` to send emails. If you don't have an account at 'Sendinblue', you may create one at this [link](https://onboarding.sendinblue.com/account/register).<br/>
+
+<section id="setting-up-your-sendinblue-account"></section>
 
 ### Setting up your Sendinblue Account
-Once you are done creating your own account, you should see this page:
+Once you are done creating your own account, you should see this page:
 ![image](https://user-images.githubusercontent.com/74145874/234631809-550e7d55-a7ba-49e7-ba03-04da3e13b2ec.png)
 
 <br/>
 
-Now, click the `Transactional`, and click the `Settings` in the left navigation bar. You should be able to see this page:
+Now, click `Transactional` and then `Settings` in the left navigation bar. You should be able to see this page:
 ![image](https://user-images.githubusercontent.com/74145874/234632518-148ad164-2ea4-47f2-a606-c955d5bfd4c7.png)
 
 <br/>
 
-Once you are there, click the `Configuration`, and `Get Your SMTP key`. You should be on this page:
+Once you are there, click `Configuration` and `Get Your SMTP Key.` You should be on this page.
 ![Sendinblue](https://user-images.githubusercontent.com/74145874/234636519-e829a46e-c7ed-4d7a-acfb-943ffbe1decd.jpg)
 
 <br/>
 
-Now, click the `Generate a new SMTP key`, a modal should appear, and you may put any key you want. In my case, I use `lab_exp`. Then click the `Generate` button.<br/>
+Now, click `Generate a new SMTP key.` A modal should appear, and you may enter any key you want. In my case, I use `lab_exp`. Then click the `Generate` button.<br/>
 
-After you click the `Generate` button, the SMTP key of Sendinblue should appear, copy that and don't loose it.
+After you click the `Generate` button, the SMTP key of Sendinblue should appear; copy that and don't lose it.
 
-### Setting up SMTP Server in PocketBase
-To set up the SMTP in `PocketBase`, go to the [admin UI home page](http://127.0.0.1:8090/_/?#/collections?collectionId=_pb_users_auth_&filter=&sort=). Then click  the setting icon, and click on `Mail Settings`. You shoul be able to see this page:
+<section id="setting-up-an-smtp-server-in-pb"></section>
+
+### Setting up an SMTP Server in PocketBase
+
+To set up SMTP in `PocketBase`, go to the [admin UI home page](http://127.0.0.1:8090/_/?#/collections?collectionId=_pb_users_auth_&filter=&sort=). Then click the setting icon and click on `Mail Settings`. You should be able to see this page:
+
 ![image](https://user-images.githubusercontent.com/74145874/234640342-6fe3603e-76ae-4738-959f-ea6a8f3d8c9e.png)
 
 <br/>
 
-Now, toggle the `Use SMTP mail server (recommended)`. A user interface for configuring your SMTP mail server would appear. Remember the SMTP key you copied earlier? You'll be pasting that in `password` field.
+Now, toggle `Use SMTP mail server (recommended)`. A user interface for configuring your SMTP mail server would appear. Remember the SMTP key you copied earlier? You'll be pasting that in the `password` field.
 ![image](https://user-images.githubusercontent.com/74145874/234645032-620fd19e-09db-4295-8b9d-05d202d7b414.png)
 
 <br/>
 
-For username field, go back to Sendinblue, and close the modal for SMTP key. Copy the `login`:
+For the username field, go back to Sendinblue and close the modal for the SMTP key. Copy the `login`:
 ![Sendinblue(1)](https://user-images.githubusercontent.com/74145874/234646133-41ff7ea8-22fe-4cb0-a4c2-62eb3ec82dbd.jpg)
 
 <br/>
 
-For `SMTP Server Host` field, paste this `smtp-relay.sendinblue.com` which can be seen back in Sendinblue page. Then you may now click the `Save changes`.<br/>
+For the `SMTP Server Host` field, paste `smtp-relay.sendinblue.com`, which can be seen back on the Sendinblue page. Then you may now click `Save changes`.<br/>
 
-`Send test email` will appear and when you click that you can test if the configuration you made is working.
+`Send test email` will appear, and when you click that, you can test if the configuration you made is working.
 ![Sendinblue(2)](https://user-images.githubusercontent.com/74145874/234647898-bdb1f83f-5070-4fb8-972c-694676149814.jpg)
+
+<section id="error-in-setting-up-pb-mail-settings"></section>
 
 ### Error in Setting up PocketBase Mail Settings
 This is an optional part of the documentation in case you encountered an error while setting up the mail settings of `PocketBase`.<br/>
 
 During the experiment at the lab, I encounter this error:
-![pb-error](https://user-images.githubusercontent.com/74145874/236878865-afa55a60-f983-4abe-986b-4a4204b2bbe7.png)
+![pb-error](https://github.com/MadrinanComLab/Exp-PocketBase/assets/74145874/1c13cb98-bdcf-47e1-8aee-673fedf8cffd)
 
-To resolved this issue, delete the following files:
+To resolve this issue, delete the following files:
 - `CHANGELOG.md`
 - `LICENSE.md`
 - `pocketbase.exe`
 - pb_data <br/>
 
-Since you deleted the `pb_data`. you have to repeat the configuration of PocketBase mail settings and create you admin account for Admin UI. You may read the [Dangers of Deleting pb_data](#create-a-link-for-this) included in this documentation.
+Since you deleted the `pb_data`. You have to repeat the configuration of PocketBase mail settings and create an admin account for the Admin UI. You may read the [Dangers of Deleting pb_data](#dangers-of-deleting-pb-data) included in this documentation.
+
+<section id="pb-collection-types"></section>
 
 ### PocketBase Collection Types
-In `PocketBase`, there are 2 types of collections:
-- **Base Collection** - is the default collection type and you can use it for any type of data.
-- **Auth Collection** - contains extra fields to manage users, like username, email, and verified. Example of `Auth collection` is the PocketBase default users collections.
+In `PocketBase`, there are two types of collections:
+- **Base Collection** - is the default collection type, and you can use it for any type of data.
+- **Auth Collection** - contains extra fields to manage users, like username, email, and verified. An example of an `Auth collection` is the PocketBase default user collections.
 
-This was discussed because later we will be creating a simple way of authenticating user.
+This was discussed because later we will be creating a simple way of authenticating users.
 
 ***Source:*** https://www.makeuseof.com/pocketbase-what-and-how/#:~:text=Creating%20a%20Collection%20in%20PocketBase&text=A%20collection%20can%20either%20be,username%2C%20email%2C%20and%20verified.
 
 ### Getting the Records
-In getting the records in PocketBase, here is the example from the [official documentation](https://pocketbase.io/docs/api-records):
+In getting the records into PocketBase, here is an example from the [official documentation](https://pocketbase.io/docs/api-records):
 ```javascript
 import PocketBase from 'pocketbase';
 
@@ -893,13 +916,15 @@ const user_data = await PB.collection("users").getOne(user_id);
 setIsVerified(user_data.verified);
 ```
 
+<section id="sending-the-email-verification"></section>
+
 ### Sending the Email Verification
 To start off, we need the following:
-- First, a button that will send email verification.
-- Then, a function that will handle the click event for sending email verification.
-- Lastly, an indicator whether the user is verified or not.<br/>
+- First, a button that will send email verification
+- Then, a function will handle the click event for sending email verification.
+- Lastly, an indicator of whether the user is verified or not<br/>
 
-Earlier, the `UseVerified.js was mentioned`, add the following function to that file:
+Earlier, `UseVerified.js` was mentioned; add the following function to that file:
 ```javascript
 async function requestVerification(){
     const email = PB.authStore.model.email;
@@ -910,9 +935,7 @@ async function requestVerification(){
     }
 }
 ```
-I know that you may not catch up with the changes in `UseVerified.js`, you may look at the [code](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js).<br/>
-
-Now, we're done with the function that will handle the sending of email. In `Auth.js`, import the `UseVerified` custom hook:
+Now, we're done with the function that will handle the sending of emails. In `Auth.js`, import the `UseVerified` custom hook:
 ```javascript
 import UseVerified from "hooks/UseVerified";
 ...
@@ -964,48 +987,51 @@ function UseVerified(){
 
 export default UseVerified;
 ```
-You may look where the code added [here](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js).<br/>
-
-In testing it, you should use your email account, and you should be able to received this email once you test it:
+In testing it, you should use your email account, and you should be able to receive this email once you test it:
 ![Verified](https://user-images.githubusercontent.com/74145874/236542192-fe1524a1-bf82-4c80-878c-37440683f95b.png)
 
-Click the `Verify` button in the email, and return to your React app, refresh it. The `Verified` should have a value of `true` now.<br/>
+Click the `Verify` button in the email, return to your React app, and refresh it. `Verified` should have a value of `true` now.<br/>
+
+*[Back to top](#top)*
+
+<section id="auto-refetching-wth-the-usequery-hook"></section>
 
 ## Automatic Re-fetching with the useQuery Hook
-In this chapter of the documentation, we will be making a changes from to the app from previous chapter and enabling it to reflect with the changes that is happening in the database (PocketBase).
+In this chapter of the documentation, we will be making changes to the app from the previous chapter and enabling it to reflect the changes that are happening in the database (PocketBase).
 
-In order to do this, we will be using `useQuery` of React, and you may visit the official documentation by clicking [this](https://tanstack.com/query/v4/docs/react/reference/useQuery).
+In order to do this, we will be using `useQuery` in React, and you may visit the official documentation by clicking [this](https://tanstack.com/query/v4/docs/react/reference/useQuery).
 
 There will be a huge changes in `UseVerified.js`, first import the `useQuery`:
+
+There will be huge changes in `UseVerified.js`. First,  import `useQuery`.
 ```javascript
 import { useQuery } from "react-query";
 ```
 
-Then the `UseVerified()` will have a different return value:
+Then `UseVerified()` will have a different return value:
 ```javascript
 return useQuery({
     queryFn: checkVerified,
     queryKey: [ "check-verified", user_id ]
 });
 ```
+This is the last chapter in this documentation; you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js) to see the whole change in `UseVerified.js`. There were minor changes in `Auth.js` as well; you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js to see the changes.
 
-This is the last chapter in this documentation, you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/hooks/UseVerified.js) to se the whole changes in `UseVerified.js`. There were minor changes in `Auth.js` as well, you can click [this](https://github.com/MadrinanComLab/Exp-PocketBase/blob/master/pb_app/src/components/Auth.js) to see the changes.
-
-### Explaining the Attributes of `useQuery` Option
+### Explaining the Attributes of the `useQuery` Option
 Keys in the option of `useQuery` was case sensitive. For example, you cannot make queryFn into queryFunction or other keys that you may wish to use.
 
-The object that is used as argument is called `options` and each of its attribute has different purpose:
+The object that is used as an argument is called `options`, and each of its attributes has a different purpose:
 
-- `queryFn` - The function you will assign here would be responsible for fetching the data you needed.
+- `queryFn` - The function you will assign here will be responsible for fetching the data you need.
 
 ***Note:*** Since `checkVerified`  was used to be the value of `queryFunction`, the return value of it will change:
 ```javascript
 return user_data.verified
 ```
 
-- `queryKey` - This will be used for data caching and the value of `"check-verified"` will be the key and the `user_id` is the second argument, which in this case will be use to query user by its record id.
+- `queryKey` - This will be used for data caching, and the value of `"check-verified"` will be the key, and `user_id` is the second argument, which in this case will be used to query the user by its record id.
 
-***Note:*** The value of `user_id` will be coming from the code snippet below. Remember, this will have a value when you logs a user then it became `undefined` when no user was logged in, and that is why optional chaining was implemented.
+***Note:*** The value of `user_id` will come from the code snippet below. Remember, this will have a value when you log in a user, then it becomes `undefined` when no user is logged in, and that is why optional chaining was implemented.
 ```javascript
 
 ...
