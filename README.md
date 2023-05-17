@@ -35,16 +35,16 @@ I know that my introduction to PocketBase was too short to describe it, so here 
 
 You can download `PocketBase` using this [link](https://pocketbase.io/docs).<br/>
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="how-to-run-pocketbase"></section>
 
 ## How to Run PocketBase?
 Once you've downloaded `PocketBase` and it was now in `Downloads`, do the following:<br/>
-<b>1.</b> Extract the ZIP file that you downloaded.<br/>
-<b>2.</b> Rename it `PocketBase` or however you like, but keep it short.<br/>
-<b>3.</b> Go to that directory, e.g., `Downloads/PocketBase`.<br/>
-<b>4.</b> Now enter this command:
+**1.** Extract the ZIP file that you downloaded.<br/>
+**2.** Rename it `PocketBase` or however you like, but keep it short.<br/>
+**3.** Go to that directory, e.g., `Downloads/PocketBase`.<br/>
+**4.** Now enter this command:
 ```
 ./pocketbase serve
 ```
@@ -53,34 +53,34 @@ If the command above didn't work for you, try this:
 pocketbase serve
 ```
 
-<b><em>Note:</em></b> The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/><br/>
-<b>5.</b> After running the previous command you will see something like this:
+***Note:*** The `pocketbase` you see in the command is not the folder name, it was the keyword for the command.<br/><br/>
+**5.** After running the previous command you will see something like this:
 ```javascript
 2023/04/09 22:11:46 Server started at http://127.0.0.1:8090
  ➜ REST API: http://127.0.0.1:8090/api/
  ➜ Admin UI: http://127.0.0.1:8090/_/
 ```
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="explaining-the-links"></section>
 
 ## Explaining the Links
 Based on the official documentation, the meaning of the links are the following:<br/>
-<b>•</b> `http://127.0.0.1:8090` - if pb_public directory exists, serves the static content from it (html, css, images, etc.)<br/>
-<b>•</b> `http://127.0.0.1:8090/_/` - Admin dashboard UI<br/>
-<b>•</b> `http://127.0.0.1:8090/api/` - REST API<br/>
+**•** `http://127.0.0.1:8090` - if pb_public directory exists, serves the static content from it (html, css, images, etc.)<br/>
+**•** `http://127.0.0.1:8090/_/` - Admin dashboard UI<br/>
+**•** `http://127.0.0.1:8090/api/` - REST API<br/>
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="pb-pre-built-folders"></section>
 
 ## Folders in a Pre-Built Pocket Base
 The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the executable:<br/>
-<b>•</b> `pb_data` - stores your application data, uploaded files, etc. (usually should be added in `.gitignore`).<br/>
-<b>•</b> `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).
+**•** `pb_data` - stores your application data, uploaded files, etc. (usually should be added in `.gitignore`).<br/>
+**•** `pb_migrations` - contains JS migration files with your collection changes (can be safely committed in your repository).
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 <br/><br/>
 
 <section id="user-defined-folder"></section>
@@ -88,7 +88,7 @@ The prebuilt PocketBase executable will automatically create and manage 2 new di
 ## User-Defined Folder
 You have to add the following folder:<br/>
 `pb_public` - This is the folder that will be hosted by PocketBase. Here is an example:<br/>
-<b>1.</b> After creating the `pb_public` folder, create a file inside this folder named `index.html` and copy and paste the following code:
+**1.** After creating the `pb_public` folder, create a file inside this folder named `index.html` and copy and paste the following code:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -103,12 +103,12 @@ You have to add the following folder:<br/>
     </body>
 </html>
 ```
-<b>2.</b> Then go to this URL:
+**2.** Then go to this URL:
 ```
 http://127.0.0.1:8090/
 ``` 
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="add-react-app-to-pb"></section>
 
@@ -123,19 +123,19 @@ Example:
 npm create react-app pb_app
 ```
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="regain-access-to-pb-admin-ui"></section>
 
 ## Regaining Access to the PocketBase Admin UI
 Just in case you have forgotten your password. What you can do is:<br/>
-<b>1.</b> Stop the server of PocketBase on your computer (if it is running).<br/>
-<b>2.</b> Delete the `pb_data`<br/>
-<b>3.</b> Run your PocketBase<br/>
-<b>4.</b> Go to `http://127.0.0.1:8090/_/`<br/>
-<b>5.</b> Then you can now set your new email and password. <br/>
+**1.** Stop the server of PocketBase on your computer (if it is running).<br/>
+**2.** Delete the `pb_data`<br/>
+**3.** Run your PocketBase<br/>
+**4.** Go to `http://127.0.0.1:8090/_/`<br/>
+**5.** Then you can now set your new email and password. <br/>
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="dangers-of-deleting-pb-data"></section>
 
@@ -144,9 +144,9 @@ Deleting this folder was helpful when you forgot your password for the admin UI,
 
 Later on, configuring the mail settings of PocketBase will be discussed in this documentation.
 
-<b><em>Additional Note:</em></b> By deleting the `pb_data`, you are deleting the data in your database. <b>DO NOT</b> delete `pb_migration` because this contains the structure of your database. You may delete it unless you intend to delete the structure of the database. But to just regain access to the admin side of your database, just delete the `pb_data`.
+***Additional Note:*** By deleting the `pb_data`, you are deleting the data in your database. **DO NOT** delete `pb_migration` because this contains the structure of your database. You may delete it unless you intend to delete the structure of the database. But to just regain access to the admin side of your database, just delete the `pb_data`.
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="creating-new-collection"></section>
 
@@ -172,27 +172,27 @@ Unfamiliar with indexes? You can read about it [here](https://www.w3schools.com/
 
 I apologize about it; this README was created while first exploring PocketBase.
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="react-pb-sdk-setup"></section>
 
 ## React and PocketBase SDK Setup
 In the tutorial, the following files were added to the root folder of `pb_app`:<br/>
-<b>•</b> <em>.env.local</em><br/>
-<b>•</b> <em>jsconfig.json</em> - In the code here, what it does is make the `src` folder the root directory for importing and avoid the example imports below.:<br/>
+**•** *.env.local*<br/>
+**•** *jsconfig.json* - In the code here, what it does is make the `src` folder the root directory for importing and avoid the example imports below.:<br/>
 ```javascript
 import x from "../../../folder/file";
 ```
 <br/>
 
-<b>•</b> Delete the following in `pb_app/src`:<br/>
-    <b>•</b> <em>App.css</em><br/>
-    <b>•</b> <em>App.test.js</em><br/>
-    <b>•</b> <em>index.css</em><br/>
-    <b>•</b> <em>logo.svg</em><br/>
-    <b>•</b> <em>reportWebVitals.js</em><br/>
-    <b>•</b> <em>setupTest.js</em><br/>
-<b>•</b> Remove the following in `index.js`:<br/>
+**•** Delete the following in `pb_app/src`:<br/>
+    **•** *App.css*<br/>
+    **•**  *App.test.js*<br/>
+    **•**  *index.css*<br/>
+    **•**  *logo.svg*<br/>
+    **•**  *reportWebVitals.js*<br/>
+    **•**  *setupTest.js*<br/>
+**•** Remove the following in `index.js`:<br/>
 
 ```javascript
 import reportWebVitals from './reportWebVitals';
@@ -234,7 +234,7 @@ import './App.css';
 ```
 npm install pocketbase --save
 ```
-<b><em>Note:</em></b> Make sure you are in the `pb_app` directory, where the React app is.<br/>
+***Note:*** Make sure you are in the `pb_app` directory, where the React app is.<br/>
 
 <b>•</b> Then create the `/lib/pocketbase.js` file inside the `src` folder and add the following code snippet:
 
@@ -254,7 +254,7 @@ export default pb;
 npm start
 ```
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="authentication"></section>
 
@@ -368,7 +368,7 @@ To install `react-hook-form` in your project, just run the following command:
 ```
 npm install react-hook-form
 ```
-<b><em>NOTE:</em></b> Make sure you are in `pb_app` folder before you install this npm library.<br/>
+***NOTE:*** Make sure you are in `pb_app` folder before you install this npm library.<br/>
 
 - State object that will be used for a simple loading indicator.
 ```javascript
@@ -475,7 +475,7 @@ function Auth(){
 export default Auth;
 ```
 
-<em>[Back to top](#top)</em>
+*[Back to top](#top)*
 
 <section id="auth-hooks"></section>
 
@@ -721,7 +721,7 @@ export default App;
 
 <br/>
 
-`UseLogin.js` will be looked like this after the destructuring:
+`UseLogin.js` will look like this after the destructuring:
 ```javascript
 import PB from "lib/pocketbase";
 
@@ -748,7 +748,7 @@ export default UseLogin;
 
 <br/>
 
-And because of these changes, the `Auth.js` will looked like this:
+And because of these changes, `Auth.js` will look like this:
 ```javascript
 import UseLogin from "hooks/UseLogin";
 import UseLogout from "hooks/UseLogout";
