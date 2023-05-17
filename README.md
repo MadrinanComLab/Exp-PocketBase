@@ -236,12 +236,13 @@ import './App.css';
       </header>
     </div>
 ```
-<br/>
+</br>
 
 **•** You can now add the JavaScript PocketBase SDK by running the following command in your terminal:
 ```
 npm install pocketbase --save
 ```
+
 ***Note:*** Make sure you are in the `pb_app` directory, where the React app is.<br/>
 
 **•** Then create the `/lib/pocketbase.js` file inside the `src` folder and add the following code snippet:
